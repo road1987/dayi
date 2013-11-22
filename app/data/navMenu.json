@@ -1,0 +1,11 @@
+{
+    "success": true,
+    "menu": [
+        {"id": 'baseInfoMgr', "name": '基础信息维护' , menu : [
+						{},
+						{},        		
+        ]},
+        {"id": 'salesPlanMgr', "name": '配货计划管理'},
+        {"id": 'supplementPlanMgr', "name": '补货计划管理'}
+    ]
+}
