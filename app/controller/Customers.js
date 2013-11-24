@@ -5,21 +5,13 @@ Ext.define('SP.controller.Customers', {
     	"customer.List",
     	"customer.Edit"
     ],
-    
-    
-    stores: [
-        'Customers'
-    ],
-        
-    models : [
-    	  'Customer'
-    ],
+    stores: [ 'Customers'],
+    models : [ 'Customer' ],
     
     init: function() {
-        
         this.control({
-        	"viewport" : { render : function(){ }}	,
-        	"customerlist": {
+        	//"viewport" : { render : function(){ alert("viewport render") }}	,
+           "customerlist": {
                 itemdblclick: this.editUser
            },
            

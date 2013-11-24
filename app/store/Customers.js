@@ -1,9 +1,8 @@
 Ext.define('SP.store.Customers', {
     extend: 'Ext.data.Store',
-    
-		model : 'SP.model.Customer',
-		
-		autoLoad: true,
+    requires : 'SP.model.Customer',
+    model : 'SP.model.Customer',
+    autoLoad: true,
 		
     proxy: {
         type: 'ajax',
@@ -14,5 +13,4 @@ Ext.define('SP.store.Customers', {
             successProperty: 'success'
         }
     }
-    
 });
