@@ -28,7 +28,7 @@ Ext.define('SP.controller.Customers', {
     },
     
     updateCustomer : function(button){
-	   var win    = button.up('window'),
+	   var  win    = button.up('window'),
 	        form   = win.down('form'),
 	        record = form.getRecord(),
 	        values = form.getValues();

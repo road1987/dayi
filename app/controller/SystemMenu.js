@@ -1,25 +1,41 @@
 Ext.define('SP.controller.SystemMenu', {
     extend: 'Ext.app.Controller',
     stores : ['SystemMenu'],
-    refs: [
-           {ref: 'SubMenuView', selector: 'submenu'}
-    ],
+    views : ['MainMenu' , 'SubMenu'],
        
     init: function() {
     	var me = this;
         this.control({
-        	"mainmenu": {
-        		selectionchange: me.onMainMenuSelectionChange
+        	"mainmenuview button": {
+        		click: me.showSubMenu
         	}
         });
     },
     
-   	onMainMenuSelectionChange : function(view , records) {
-        if (records.length) {
-        	var subMenuView = this.getSubMenuView();
-        	//var store = subMenuView.getStore().loadData(records[0].data.items);
-        	//subMenuView.bindStore(store);
-            alert(records[0].data.items[0].name);
-        }
+    onLaunch : function(){
+    	this.buildSystemMenu();
+    	alert();
+    },
+    
+    showSubMenu : function(comp,evt) {
+    	var systemMenuStore = this.getSystemMenuStore();
+    	
+    	systemMenuStore.each(function(){
+    		alert(this.data.items[0].name);
+    	});
+    },
+    
+    buildSystemMenu : function(){
+    	var systemMenuStore = this.getSystemMenuStore();
+    	
+    	var mainMenuView = this.getMainMenuView();
+    	
+    	alert(mainMenuView)
+    	systemMenuStore.each(function(){
+    		mainMenuView.add([{
+    			text : this.data.name
+    		}]);
+    	});
     }
+    
 });

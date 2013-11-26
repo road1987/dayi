@@ -1,6 +1,7 @@
 Ext.define('SP.store.SystemMenu', {
     extend: 'Ext.data.Store',
-    model : 'SP.model.MenuItem',
+    fields: ['id', 'name' , 'description' ,'items'],
+    autoLoad : true,
     data  : [
              {	 
             	 id : 'baseInfoMgr' , 

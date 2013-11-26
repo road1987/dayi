@@ -4,7 +4,7 @@ Ext.define('SP.view.Viewport' ,{
                  'SP.view.MainMenu',
                  'SP.view.SubMenu',
                  'SP.view.customer.List',
-                 'SP.view.customer.Edit',
+                 'SP.view.customer.Edit'
            ],
 
 	layout : 'border',
@@ -21,14 +21,8 @@ Ext.define('SP.view.Viewport' ,{
     				columnWidth : 0.25,
     				html : "<h1>DAYI-SP</h1>"
     			},{
-    				xtype : 'mainmenu',
+    				xtype : 'mainmenuview',
     				width : 400,
-    				items : [{
-    					xtype : 'button',
-    					text : 'xxxx',
-    					height : 40
-    					}
-    				],
     				columnWidth : 0.5	
     			},{	
     				xtype : 'box',
@@ -41,15 +35,14 @@ Ext.define('SP.view.Viewport' ,{
         		html : '<div style="text-align:center;">Copyright (c) 2013 重爻科技有限公司 </div>',
         		height : 20
         },{
-        	xtype : 'panel',
-        	title : '菜单',
+        	xtype : 'container',
             region:'west',
             border: false,
             split:true,
             width: 290,
             minSize: 100,
             maxSize: 500,
-            items : [{ xtype : 'submenu'}]
+            items : [{ xtype : 'submenuview'}]
         },{
         	region : 'center',
         	xtype : "customerlist"		
