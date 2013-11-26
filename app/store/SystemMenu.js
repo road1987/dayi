@@ -29,6 +29,11 @@ Ext.define('SP.store.SystemMenu', {
             	       {id : 'createSupplementPlan' , name : '创建补货计划' , description : 'create supplement plan(创建补货计划)'},
             	       {id : 'querySupplementPlan' , name : '补货计划查询' , description : 'supplement plan query(补货计划查询)'}
             	 ]
+             },
+             {
+            	 id : 'systemConfigMgr',
+            	 name : '系统配置',
+            	 description : 'supplement manager(补货管理)'
              }
     ]
 });
