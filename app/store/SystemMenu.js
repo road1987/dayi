@@ -33,7 +33,10 @@ Ext.define('SP.store.SystemMenu', {
              {
             	 id : 'systemConfigMgr',
             	 name : '系统配置',
-            	 description : 'supplement manager(补货管理)'
+            	 description : 'system menu (系统配置)',
+            	 items : [
+                	      {id : 'standardStore' , name : '标准店折算' , description: ''}
+                 ]
              }
     ]
 });

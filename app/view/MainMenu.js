@@ -3,7 +3,8 @@ Ext.define('SP.view.MainMenu' ,{
     extend: 'Ext.container.Container',
     alias: 'widget.mainmenuview',
 	stores : ['SystemMenu'],
-    
+    style : 'text-align : center ',
+	
     initComponent : function(){
     	var me = this;
     	var store = Ext.data.StoreManager.lookup('SystemMenu');
@@ -14,7 +15,8 @@ Ext.define('SP.view.MainMenu' ,{
     			margin : '10',
     			scale   : 'large',
     			id : this.data.id ,
-    			text : this.data.name
+    			text : this.data.name,
+    			toggleGroup : 'systemMenu'
     		})
     	});
     		

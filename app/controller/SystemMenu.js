@@ -26,16 +26,7 @@ Ext.define('SP.controller.SystemMenu', {
     },
     
     buildSystemMenu : function(){
-    	var systemMenuStore = this.getSystemMenuStore();
-    	
-    	var mainMenuView = this.getMainMenuView();
-    	
-    	alert(mainMenuView)
-    	systemMenuStore.each(function(){
-    		mainMenuView.add([{
-    			text : this.data.name
-    		}]);
-    	});
+
     }
     
 });
