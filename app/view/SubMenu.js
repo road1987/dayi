@@ -1,12 +1,14 @@
 Ext.define('SP.view.SubMenu' ,{
-    extend : 'Ext.container.Container',
+    extend : 'Ext.panel.Panel',
     alias : 'widget.submenuview',
     stores : ['SystemMenu'],
-        
+    layout : 'accordion',
+    
     initComponent : function(){
         var me = this;
         var store = Ext.data.StoreManager.lookup('SystemMenu');
         var items = [];
+        
         store.each(function(){
         	var subMenuData = this.data.items;
         	var subItems = [];

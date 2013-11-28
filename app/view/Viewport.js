@@ -14,10 +14,8 @@ Ext.define('SP.view.Viewport' ,{
     		id : 'header',
 	        xtype: 'container',
             region: 'north',
-           	width: 300,
-            height: 60,
+            height: 90,
         	layout : 'column',
-        	style : 'border-bottom:1px solid #99BCE8; margin-bottom: 6px',
     		items : [{	
     				xtype : 'box',
     				columnWidth : 0.2,
@@ -26,33 +24,31 @@ Ext.define('SP.view.Viewport' ,{
     				xtype : 'mainmenuview',
     				columnWidth : 0.6	
     			},{	
-    				xtype : 'box',
+    				xtype : 'userinfoview',
     				columnWidth : 0.2
     		}]
     	}
         ,{
+        	id : 'sidebar',
         	xtype : 'container',
             region:'west',
             border: false,
             split:true,
-            width: 290,
-            style : 'background: white',
+            width: 280,
             minSize: 100,
             maxSize: 500,
-            items : [{
-            	xtype : 'userinfoview'
-            },{ 
+            items : [{ 
             	xtype : 'submenuview'
              }]
         },{
+        	id : 'main' ,
         	region : 'center',
         	xtype : "customerlist"		
         },{
+        	id : 'footer',
     		xtype : 'box',
     		region : 'south',
-    		style : 'border-top : 1px solid #99BCE8; margin-top: 6px',
-    		html : '<div style="text-align:center;">Copyright (c) 2013 重爻科技有限公司 </div>',
-    		height : 22
+    		html : '<div style="text-align:center;">Copyright (c) 2013 重爻科技有限公司 </div>'
         }];
         this.callParent(arguments);
     }
