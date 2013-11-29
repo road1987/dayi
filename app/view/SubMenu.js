@@ -24,12 +24,10 @@ Ext.define('SP.view.SubMenu' ,{
 	        		});
 	        	});
         	}
-        	var menuPanel = Ext.create("Ext.panel.Panel" , {
+        	var menuPanel = {
         		title : this.data.name,
-        		items : subItems,
-        		margin : '0px 0px 10px 0px',
-        		height : '100px'
-        	});
+        		items : subItems
+        	};
         	items.push(menuPanel);
         });
         		

@@ -13,19 +13,10 @@ Ext.define('SP.controller.SystemMenu', {
     },
     
     onLaunch : function(){
-    	this.buildSystemMenu();
-    	alert();
+
     },
     
     showSubMenu : function(comp,evt) {
-    	var systemMenuStore = this.getSystemMenuStore();
-    	
-    	systemMenuStore.each(function(){
-    		alert(this.data.items[0].name);
-    	});
-    },
-    
-    buildSystemMenu : function(){
 
     }
     
