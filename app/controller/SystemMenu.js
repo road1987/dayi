@@ -13,6 +13,7 @@ Ext.define('SP.controller.SystemMenu', {
     },
     
     onLaunch : function(){
+    	var mainMenu = this.getMainMenuView();
 
     },
     
