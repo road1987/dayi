@@ -2,7 +2,7 @@ Ext.define('SP.view.SubMenu' ,{
     extend : 'Ext.panel.Panel',
     alias : 'widget.submenuview',
     stores : ['SystemMenu'],
-    layout : 'accordion',
+    //layout : 'accordion',
     
     initComponent : function(){
         var me = this;
@@ -11,22 +11,11 @@ Ext.define('SP.view.SubMenu' ,{
         
         store.each(function(){
         	var subMenuData = this.data.items;
-        	var subItems = [];
-        	if(subMenuData){
-	        	Ext.each(subMenuData , function(){
-	        		subItems.push({
-	        			xtype : 'button',
-	        			width : '100%',
-	        			height : '30px',
-	        			text : this.name,
-	        			id : this.id,
-	        			toggleGroup : 'subMenu'
-	        		});
-	        	});
-        	}
+        	var menuListTpl = new Ext.XTemplate('<tpl for="."><div class="item">{name}</div></tpl>');
         	var menuPanel = {
         		title : this.data.name,
-        		items : subItems
+        		html : menuListTpl.apply(subMenuData),
+        		itemSelector : '.item'
         	};
         	items.push(menuPanel);
         });

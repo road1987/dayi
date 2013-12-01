@@ -15,6 +15,7 @@
 
 #header .menu-main{
 	text-align : center;
+	outline : none;
 }
 
 #header .menu-main ul{
@@ -47,6 +48,10 @@
 }
 
 #header .menu-main li a:hover{
+	background : #EEEEEE;
+}
+
+#header .menu-main li.x-item-selected a{
 	background : #EEEEEE;
 }
 

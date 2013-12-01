@@ -8,8 +8,8 @@ Ext.define('SP.view.MainMenu' ,{
     initComponent : function(){
     	var me = this;
     	var tpl = '<ul><tpl for=".">' + 
-    				'<li id="{id}">' +
-    					'<a>' +
+    				'<li id="{id}" class="js-main-menuitem">' +
+    					'<a href="javascript:void(0)">' +
     						'<span class="icon-{id}"></span>{name}' +
     					'</a>' +
     				'</li>' + 
@@ -17,29 +17,9 @@ Ext.define('SP.view.MainMenu' ,{
     	
     	Ext.apply(this, {
     		tpl : tpl,
-    		itemSelector : ''
+    		itemSelector : 'li.js-main-menuitem'
     	});
-    	
-    	/*
-    	var store = Ext.data.StoreManager.lookup('SystemMenu');
-    	var items = [];
-    	store.each(function(){
-    		items.push({
-    			xtype : 'button',
-    			margin : '10',
-    			scale   : 'large',
-    			height : 60,
-    			id : this.data.id ,
-    			text : this.data.name,
-    			cls : 'btn-mainmenu',
-    			toggleGroup : 'systemMenu'
-    		})
-    	});
-    		
-    	Ext.apply(this , {
-    		items : items
-    	});
-*/
+
     	this.callParent();
     }
 });
