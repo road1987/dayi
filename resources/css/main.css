@@ -66,9 +66,36 @@
 
 
 #sidebar {
-	border : 1px solid blue;	
+	border : 1px solid #3377A9;	
 	border-width : 1px;
-	background : white;
+	background : #EEEEEE;
+}
+
+#sidebar .menulist {
+	1padding : 2px;
+}
+
+#sidebar .menulist a.menuitem {
+	height : 36px;
+	line-height : 36px;
+	display : block;
+	background : #EAF1FC;
+	border-bottom : 1px solid #C8D6ED;
+	font-weight : bold;
+	color : #1F1F1F;
+	padding-left : 20px;
+	text-decoration : none;
+}
+
+#sidebar .menulist a.menuitem:hover {
+	background: #96B9E6; /* Old browsers */
+	background: -moz-linear-gradient(top, #C6DDE8 0%, #96B9E6 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6DDE8), color-stop(100%,#96B9E6)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #C6DDE8 0%,#96B9E6 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #C6DDE8 0%,#96B9E6 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #C6DDE8 0%,#96B9E6 100%); /* IE10+ */
+	background: linear-gradient(top, #C6DDE8 0%,#96B9E6 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#C6DDE8', endColorstr='#96B9E6',GradientType=0 ); /* IE6-9 */
 }
 
 #footer {
