@@ -20,13 +20,21 @@ Ext.define('SP.view.SubMenu' ,{
         	           	'</div>'].join("");
         	
         	var menuListTpl = new Ext.XTemplate(tpl);
-        	var menuPanel = {
-        		//title : this.data.name,
-        		html : menuListTpl.apply(subMenuData),
-        		xtype : 'container',
-        		itemSelector : 'a.menuitem'
-        	};
-        	items.push(menuPanel);
+//        	var menuPanel = {
+//        		//title : this.data.name,
+//        		html : menuListTpl.apply(subMenuData),
+//        		xtype : 'container',
+//        		itemSelector : '.item'
+//        	};
+        	var menu = Ext.create("Ext.view.View",{
+        		tpl : tpl ,
+        		store : new Ext.data.Store({
+            	    fields: ['id', 'name' , 'description' ,'items'],
+        			data : this.data.items
+        		}),
+        		itemSelector : '.menuitem'
+        	});
+        	items.push(menu);
         });
         		
         Ext.apply(this , {
