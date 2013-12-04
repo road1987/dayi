@@ -44,6 +44,6 @@ Ext.define('SP.controller.SystemMenu', {
     },
     
     showContent : function(comp,record,evt){
-    	alert(record[0].data.id);
+    	//alert(record[0].data.id);
     }
 });

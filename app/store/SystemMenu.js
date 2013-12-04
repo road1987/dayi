@@ -32,10 +32,13 @@ Ext.define('SP.store.SystemMenu', {
              },
              {
             	 id : 'systemConfigMgr',
-            	 name : '系统配置',
+            	 name : '基础配置',
             	 description : 'system menu (系统配置)',
             	 items : [
-                	      {id : 'standardStore' , name : '标准店折算' , description: ''}
+            	          {id : 'customerCategoryMgr', name : '客户分类' , description : 'customer category manage(客户分类管理)'},
+                	      {id : 'customerLevelMgr', name : '客户等级' , description : 'customer level manage(客户等级管理)'},               	      
+                	      {id : 'standardStore' , name : '标准店折算' , description: ''},
+                	      {id : 'areaMgr', name : '地区字典' , description : 'area manage(地区字典管理)'}
                  ]
              }
     ]

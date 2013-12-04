@@ -20,13 +20,7 @@ Ext.define('SP.view.SubMenu' ,{
         	           	'</div>'].join("");
         	
         	var menuListTpl = new Ext.XTemplate(tpl);
-//        	var menuPanel = {
-//        		//title : this.data.name,
-//        		html : menuListTpl.apply(subMenuData),
-//        		xtype : 'container',
-//        		itemSelector : '.item'
-//        	};
-        	var menu = Ext.create("Ext.view.View",{
+        	var menuList = Ext.create("Ext.view.View",{
         		tpl : tpl ,
         		store : new Ext.data.Store({
             	    fields: ['id', 'name' , 'description' ,'items'],
@@ -34,7 +28,7 @@ Ext.define('SP.view.SubMenu' ,{
         		}),
         		itemSelector : '.menuitem'
         	});
-        	items.push(menu);
+        	items.push(menuList);
         });
         		
         Ext.apply(this , {
