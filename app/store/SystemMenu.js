@@ -7,6 +7,7 @@ Ext.define('SP.store.SystemMenu', {
             	 id : 'baseInfoMgr' , 
             	 name : '信息管理' , 
             	 items : [
+                	  {id : 'productMgr' , name : '物料管理' , description: 'product manage(物料管理)'},
             	      {id : 'retailerMgr' , name : '客户管理' , description: 'retailer manage(客户管理)'},
             	      {id : 'destributorMgr', name : '渠道服务商管理' , description : 'destributor manage(渠道服务商管理)'}
             	 ],
@@ -17,8 +18,8 @@ Ext.define('SP.store.SystemMenu', {
             	 name : '配货管理',
             	 description : 'deliver goods manager(配货管理)',
             	 items : [
-            	       {id : 'createDeliverPlan' , name : '创建配货计划' , description : 'create deliver goods plan(创建配货计划)'},
-            	       {id : 'queryDeliverPlan' , name : '配货计划查询' , description : 'deliver goods plan query(配货计划查询)'}
+               	       {id : 'queryDeliverPlan' , name : '配货计划查询' , description : 'deliver goods plan query(配货计划查询)'},
+            	       {id : 'createDeliverPlan' , name : '创建配货计划' , description : 'create deliver goods plan(创建配货计划)'}
             	 ]
              },
              {
@@ -26,8 +27,8 @@ Ext.define('SP.store.SystemMenu', {
             	 name : '补货管理',
             	 description : 'supplement manager(补货管理)',
             	 items : [
-            	       {id : 'createSupplementPlan' , name : '创建补货计划' , description : 'create supplement plan(创建补货计划)'},
-            	       {id : 'querySupplementPlan' , name : '补货计划查询' , description : 'supplement plan query(补货计划查询)'}
+               	       {id : 'querySupplementPlan' , name : '补货计划查询' , description : 'supplement plan query(补货计划查询)'},
+            	       {id : 'createSupplementPlan' , name : '创建补货计划' , description : 'create supplement plan(创建补货计划)'}
             	 ]
              },
              {
