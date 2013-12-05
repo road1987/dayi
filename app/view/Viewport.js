@@ -5,6 +5,8 @@ Ext.define('SP.view.Viewport' ,{
                  'SP.view.MainMenu',
                  'SP.view.SubMenu',
                  'SP.view.customer.List',
+                 'SP.view.customer.Type',
+                 'SP.view.customer.Level',
                  'SP.view.customer.Edit'
            ],
 
@@ -43,7 +45,15 @@ Ext.define('SP.view.Viewport' ,{
         },{
         	id : 'main' ,
         	region : 'center',
-        	xtype : "customerlist"		
+        	xtype : 'container',
+        	layout : 'card',
+        	items : [{
+        		xtype : 'customerlevel'
+        	},{
+        		xtype : 'customerlist'
+        	},{
+        		xtype : 'customertype'
+        	}]
         },{
         	id : 'footer',
     		xtype : 'box',

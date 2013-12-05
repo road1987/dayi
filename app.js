@@ -1,8 +1,7 @@
 Ext.application({
 		name: 'SP',
 		autoCreateViewport : true,
-		views : ['MainMenu','SubMenu'],
 		controllers : ['Customers' , 'SystemMenu'],
-		models : ['Customer'],
-		stores : ['Customers' , 'SystemMenu']
+		models : ['Customer','CustomerType','CustomerLevel'],
+		stores : ['Customers' , 'SystemMenu', 'CustomerType' , 'CustomerLevel']
 });

@@ -12,11 +12,13 @@ Ext.define('SP.controller.SystemMenu', {
     },{
     	ref : 'submenuitem',
     	selector : "viewport > #sidebar > dataview"
+    },{
+    	ref : 'mainpanel',
+    	selector : "viewport > #main"
     }],
     
     init: function() {
     	var me = this;
-
     	
         this.control({
         	"mainmenuview": {
@@ -40,10 +42,12 @@ Ext.define('SP.controller.SystemMenu', {
     		
     	var subMenuItem = subMenuView.getLayout().getActiveItem();
     		subMenuItem.getSelectionModel().select(0);
-    		
     },
     
+    /*show current selected submenuitem operate panel*/
     showContent : function(comp,record,evt){
-    	//alert(record[0].data.id);
+    	var panelId = record[0].data.id + 'Panel';
+    	var mainPanel = this.getMainpanel();
+    	mainPanel.getLayout().setActiveItem(panelId);
     }
 });
