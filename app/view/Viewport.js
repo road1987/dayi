@@ -5,9 +5,11 @@ Ext.define('SP.view.Viewport' ,{
                  'SP.view.MainMenu',
                  'SP.view.SubMenu',
                  'SP.view.customer.List',
-                 'SP.view.customer.Type',
-                 'SP.view.customer.Level',
-                 'SP.view.customer.Edit'
+                 'SP.view.customer.Edit',
+                 'SP.view.customertype.List',                 
+                 'SP.view.customerlevel.List',  
+                 'SP.view.customerlevel.Edit',    
+                 'SP.view.customerlevel.Add'   
            ],
 
 	layout : 'border',
@@ -48,11 +50,15 @@ Ext.define('SP.view.Viewport' ,{
         	xtype : 'container',
         	layout : 'card',
         	items : [{
-        		xtype : 'customerlevel'
+        		xtype : 'customerlevellist'
+        	},{
+        		xtype : 'customerleveledit'
+        	},{
+        		xtype : 'customerleveladd'
         	},{
         		xtype : 'customerlist'
         	},{
-        		xtype : 'customertype'
+        		xtype : 'customertypelist'
         	}]
         },{
         	id : 'footer',
