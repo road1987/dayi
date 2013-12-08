@@ -30,7 +30,7 @@ Ext.define('SP.view.customerlevel.Add' ,{
         	        text: '重置',
         	        handler: function() {
         	            this.up('form').getForm().reset();
-        	        }
+        	        } 
         	    },*/ {
         	        text: '提交',
         	        formBind: true, //only enabled once the form is valid
