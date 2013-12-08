@@ -65,7 +65,11 @@ Ext.define('SP.controller.CustomerLevel', {
     		Ext.Msg.alert("提示" ,"未选中任何数据！");
     		return false;
     	}
-    	levelList.getStore().remove(selectedItems);
+    	Ext.Msg.confirm("提示","数据删除后将不可恢复，是否确定删除？",function(isRemove){
+    		if(isRemove === "yes"){
+    			levelList.getStore().remove(selectedItems);
+    		}
+    	});
     },
     
     showLevelList : function(){

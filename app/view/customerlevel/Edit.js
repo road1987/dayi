@@ -26,12 +26,12 @@ Ext.define('SP.view.customerlevel.Edit' ,{
         	        name: 'description',
         	        allowBlank: false
     	        }],
-    	        buttons : [{
+    	        buttons : [/*{
         	        text: '重置',
         	        handler: function() {
         	            this.up('form').getForm().reset();
         	        }
-        	    }, {
+        	    },*/ {
         	        text: '提交',
         	        formBind: true, //only enabled once the form is valid
         	        disabled: true,
