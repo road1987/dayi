@@ -6,10 +6,11 @@ Ext.define('SP.store.CustomerType', {
 	
     proxy: {
         type: 'ajax',
-        url: 'app/data/customer-type.json',
+        url: 'app/data/customer-type.xml',
         reader: {
-            type: 'json',
+            type: 'xml',
             root: 'customertype',
+            record : 'type',
             successProperty: 'success'
         }
     }    

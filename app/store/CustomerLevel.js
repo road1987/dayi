@@ -6,10 +6,11 @@ Ext.define('SP.store.CustomerLevel', {
 	
     proxy: {
         type: 'ajax',
-        url: 'app/data/customer-level.json',
+        url: 'app/data/customer-level.xml',
         reader: {
-            type: 'json',
+            type: 'xml',
             root: 'customerlevel',
+            record : 'level',
             successProperty: 'success'
         }
     }

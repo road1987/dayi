@@ -35,6 +35,9 @@ Ext.define('SP.controller.CustomerLevel', {
            },
            "customerleveledit button[action=back]": {
                click: this.showLevelList
+           },
+           "customerleveladd button[action=back]": {
+               click: this.showLevelList
            }
         });
     },
@@ -42,7 +45,6 @@ Ext.define('SP.controller.CustomerLevel', {
    	addLevel: function(grid, record) {
     	var mainPanel = this.getMainpanel();
     	mainPanel.getLayout().setActiveItem(this.getCustomerLevelAdd());
-   		alert("add action!");
     },
     
     editLevel : function(){

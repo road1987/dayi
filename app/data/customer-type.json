@@ -1,7 +1,0 @@
-{
-    "success": true,
-    "customertype": [
-        {"id": 1, "name": '专营店', "description": "UNKNOWN"},
-        {"id": 2, "name": '专柜', "description": "UNKNOWN"}
-    ]
-}
