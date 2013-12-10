@@ -37,7 +37,9 @@ Ext.define('SP.store.SystemMenu', {
             	 description : 'system menu (系统配置)',
             	 items : [
             	          {id : 'customerTypeMgr', name : '客户分类' , description : 'customer type manage(客户分类管理)'},
-                	      {id : 'customerLevelMgr', name : '客户等级' , description : 'customer level manage(客户等级管理)'},               	      
+                	      {id : 'customerLevelMgr', name : '客户等级' , description : 'customer level manage(客户等级管理)'},      
+            	          {id : 'destributorMgr', name : '渠道服务商分类' , description : 'destributor type manage(渠道服务商分类管理)'},
+                	      {id : 'destributorLevelMgr', name : '渠道服务商等级' , description : 'destributor level manage(渠道服务商等级管理)'},
                 	      {id : 'standardStore' , name : '标准店折算' , description: ''},
                 	      {id : 'areaMgr', name : '地区字典' , description : 'area manage(地区字典管理)'}
                  ]

@@ -50,7 +50,10 @@ Ext.define('SP.view.Viewport' ,{
         	id : 'main' ,
         	region : 'center',
         	xtype : 'container',
-        	layout : 'card',
+        	layout : { 
+        		type : 'card',
+        		deferredRender: true
+        	},
         	items : [{
         		xtype : 'customerlevellist'
         	},{
