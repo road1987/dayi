@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers>
+    <total>100</total>
+    <success>true</success>
+    <customer>
+        <id>1</id>      
+        <area>华南大区</area>
+        <location>广东省</location>
+        <marketdept>广东市场部</marketdept>
+        <channel>广州市春光茶叶有限公司</channel>   
+        <storename>春光茗缘大益专营店</storename>  
+        <authorizeid>TZ-00002</authorizeid>    
+        <manager>吕小勤</manager> 
+        <address>广东省广州市芳村山村洞企石路11巷63号之13</address>
+        <telphone>020-81544783</telphone>
+        <mobilephone>13902253059</mobilephone>     
+        <runmode>自营</runmode>
+        <level>C</level>
+        <authorizedate>2009/6/2</authorizedate>        
+        <description>2012.7.18复评</description>
+        <customertype>专营店</customertype>
+    </customer>
+    <customer>
+        <id>2</id>      
+        <area>华南大区</area>
+        <location>广东省</location>
+        <marketdept>广东市场部</marketdept>
+        <channel>广州市春光茶叶有限公司</channel>   
+        <storename>春光茶行商会店</storename>  
+        <authorizeid>TZ-00003</authorizeid>    
+        <manager>吕小勤</manager> 
+        <address>广东省广州市芳村南方茶叶商会</address>
+        <telphone>020-81543608</telphone>
+        <mobilephone>13902253059</mobilephone>
+        <runmode>自营</runmode>
+        <level>C</level>
+        <authorizedate>2009/6/2</authorizedate>        
+        <description>2012.7.18复评</description>
+		<customertype>专柜</customertype>
+    </customer>
+</customers>

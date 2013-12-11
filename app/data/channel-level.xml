@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customerlevel>
+    <total>100</total>
+    <success>true</success>
+    <level>
+        <id>1</id>
+        <name>C</name>
+        <description>UNKNOWN</description>
+    </level>
+    <level>
+        <id>2</id>
+        <name>C+</name>
+        <description>UNKNOWN</description>
+    </level>
+</customerlevel>
