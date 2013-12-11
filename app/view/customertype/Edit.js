@@ -2,7 +2,7 @@ Ext.define('SP.view.customertype.Edit' ,{
     extend: 'Ext.panel.Panel',
     alias: 'widget.customertypeedit',
 
-    title: '客户分类',
+    title: '客户类型',
     initComponent: function() {
     	this.tbar = Ext.create("Ext.Toolbar", {
     	    items: [{
@@ -18,11 +18,11 @@ Ext.define('SP.view.customertype.Edit' ,{
     	        border : false,
     	        url : "",
     	        items : [{
-    	        	fieldLabel: '分类名称',
+    	        	fieldLabel: '类型名称',
         	        name: 'name',
         	        allowBlank: false
         	    },{
-        	        fieldLabel: '分类描述',
+        	        fieldLabel: '类型描述',
         	        name: 'description',
         	        allowBlank: false
     	        }],

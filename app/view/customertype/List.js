@@ -3,7 +3,7 @@ Ext.define('SP.view.customertype.List' ,{
     alias: 'widget.customertypelist',
     
     id : 'customerTypeMgrPanel',
-    title: '客户分类',
+    title: '客户类型',
 	store: 'CustomerType',
 		 
     initComponent: function() {

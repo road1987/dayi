@@ -11,7 +11,13 @@ Ext.define('SP.view.Viewport' ,{
                  'SP.view.customertype.Add',  
                  'SP.view.customerlevel.List',  
                  'SP.view.customerlevel.Edit',    
-                 'SP.view.customerlevel.Add'   
+                 'SP.view.customerlevel.Add',
+                 'SP.view.channeltype.List',
+                 'SP.view.channeltype.Edit',
+                 'SP.view.channeltype.Add',
+                 'SP.view.channellevel.List',
+                 'SP.view.channellevel.Edit',
+                 'SP.view.channellevel.Add'
            ],
 
 	layout : 'border',
@@ -68,6 +74,18 @@ Ext.define('SP.view.Viewport' ,{
         		xtype : 'customertypeedit'
         	},{
         		xtype : 'customertypeadd'
+        	},{
+        		xtype : 'channeltypelist'
+        	},{
+        		xtype : 'channeltypeedit'
+        	},{
+        		xtype : 'channeltypeadd'
+        	},{
+        		xtype : 'channellevellist'
+        	},{
+        		xtype : 'channelleveledit'
+        	},{
+        		xtype : 'channelleveladd'
         	}]
         },{
         	id : 'footer',

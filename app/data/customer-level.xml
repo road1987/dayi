@@ -12,4 +12,44 @@
         <name>C+</name>
         <description>UNKNOWN</description>
     </level>
+    <level>
+        <id>3</id>
+        <name>B</name>
+        <description>UNKNOWN</description>
+    </level>
+    <level>
+        <id>4</id>
+        <name>B+</name>
+        <description>UNKNOWN</description>
+    </level>
+    <level>
+        <id>5</id>
+        <name>A</name>
+        <description>UNKNOWN</description>
+    </level>
+    <level>
+        <id>6</id>
+        <name>S1</name>
+        <description>UNKNOWN</description>
+    </level>
+    <level>
+        <id>7</id>
+        <name>S2</name>
+        <description>UNKNOWN</description>
+    </level>
+    <level>
+        <id>8</id>
+        <name>S3</name>
+        <description>UNKNOWN</description>
+    </level>
+    <level>
+        <id>9</id>
+        <name>S4</name>
+        <description>UNKNOWN</description>
+    </level>
+    <level>
+        <id>10</id>
+        <name>S5</name>
+        <description>UNKNOWN</description>
+    </level>
 </customerlevel>
