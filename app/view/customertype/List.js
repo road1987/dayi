@@ -22,7 +22,7 @@ Ext.define('SP.view.customertype.List' ,{
     	});
         this.columns = [
             {header: 'ID' , dataIndex:'id' , flex : 1},
-            {header: '类型',  dataIndex: 'name',  flex: 1},
+            {header: '类型',  dataIndex: 'value',  flex: 1},
             {header: '描述', dataIndex: 'description', flex: 1}
         ];
 

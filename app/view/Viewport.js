@@ -17,7 +17,8 @@ Ext.define('SP.view.Viewport' ,{
                  'SP.view.channeltype.Add',
                  'SP.view.channellevel.List',
                  'SP.view.channellevel.Edit',
-                 'SP.view.channellevel.Add'
+                 'SP.view.channellevel.Add',
+                 'SP.view.region.ManagePanel'
            ],
 
 	layout : 'border',
@@ -86,6 +87,8 @@ Ext.define('SP.view.Viewport' ,{
         		xtype : 'channelleveledit'
         	},{
         		xtype : 'channelleveladd'
+        	},{
+        		xtype : 'regionmanagepanel'
         	}]
         },{
         	id : 'footer',

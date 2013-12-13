@@ -9,7 +9,6 @@ Ext.define('SP.controller.CustomerType', {
     stores: [ 'CustomerType'],
     models : [ 'CustomerType' ],
     
-    
     refs : [{
     	ref : 'mainpanel',
     	selector : "viewport > #main"
@@ -27,29 +26,40 @@ Ext.define('SP.controller.CustomerType', {
     init: function() {
         this.control({
            "customertypelist button[action=add]": {
-               click: this.addType
+               click: this.showAddTypePanel
            },
            "customertypelist button[action=edit]": {
-               click: this.editType
+               click: this.showEditTypePanel
            },
            "customertypelist button[action=remove]": {
                click: this.removeType
            },
            "customertypeedit button[action=back]": {
-               click: this.showTypeList
+               click: this.showTypeListPanel
            },
            "customertypeadd button[action=back]": {
-               click: this.showTypeList
+               click: this.showTypeListPanel
+           },
+           
+           "customertypeadd form  button[action=submit]": {
+               click: this.addType
+           },
+           "customertypeedit form  button[action=submit]": {
+               click: this.updateType
            }
         });
     },
     
-   	addType: function(grid, record) {
+   	showAddTypePanel: function(grid, record) {
     	var mainPanel = this.getMainpanel();
-    	mainPanel.getLayout().setActiveItem(this.getCustomerTypeAdd());
+    	var customerTypeAddPanel = this.getCustomerTypeAdd();
+   	    var formPanel = customerTypeAddPanel.down('form');
+   	    
+   	    formPanel.getForm().reset();
+    	mainPanel.getLayout().setActiveItem(customerTypeAddPanel);
     },
     
-    editType : function(){
+    showEditTypePanel : function(){
     	var typeList = this.getCustomerTypeList();
     	var selectedItems = typeList.getSelectionModel().getSelection();
     	if(selectedItems.length <= 0 ){
@@ -60,6 +70,43 @@ Ext.define('SP.controller.CustomerType', {
     	var customerTypeEdit = this.getCustomerTypeEdit();
     	customerTypeEdit.down('form').loadRecord(selectedItems[0]);
     	mainPanel.getLayout().setActiveItem(customerTypeEdit);
+    },
+    
+    showTypeListPanel : function(){
+    	var mainPanel = this.getMainpanel();
+    	var typeList = this.getCustomerTypeList();
+    	mainPanel.getLayout().setActiveItem(typeList);
+    	typeList.getStore().load();
+    },
+    
+    addType : function(){
+   	 var customerTypeAdd = this.getCustomerTypeAdd();
+	     var form = customerTypeAdd.down('form');
+	     var customer = Ext.create( "SP.model.CustomerType" , form.getValues());
+	   
+	     customer.save({
+	    	 success : function(){
+	    		 Ext.Msg.alert("提示" ,"成功添加记录");
+	    	 },
+	    	 error : function(){
+	    		 Ext.Msg.alert("提示" ,"添加记录失败,请重试");
+	    	 }
+	     });
+   },
+   
+    updateType : function(){
+	   	var customerTypeEdit = this.getCustomerTypeEdit();
+	    var form = customerTypeEdit.down('form');
+        var record = form.getRecord();
+        form.updateRecord(record);
+        record.save({
+	    	 success : function(){
+	    		 Ext.Msg.alert("提示" ,"成功修改记录!");
+	    	 },
+	    	 error : function(){
+	    		 Ext.Msg.alert("提示" ,"修改记录失败,请重试!");
+	    	 }
+	     });
     },
     
     removeType : function(){
@@ -74,10 +121,5 @@ Ext.define('SP.controller.CustomerType', {
     			typeList.getStore().remove(selectedItems);
     		}
     	});
-    },
-    
-    showTypeList : function(){
-    	var mainPanel = this.getMainpanel();
-    	mainPanel.getLayout().setActiveItem(this.getCustomerTypeList());    	
     }
 });

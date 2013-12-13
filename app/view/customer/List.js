@@ -5,7 +5,13 @@ Ext.define('SP.view.customer.List' ,{
     id : 'customerMgrPanel',
     title: '客户信息',
 	store: 'Customers',
-		 
+	plugins: [{
+		ptype: 'rowexpander',
+		rowBodyTpl : [
+		'<p>{manager}:{storename}</p>'
+		]
+	}],
+	
     initComponent: function() {
     	this.tbar = Ext.create("Ext.Toolbar", {
     		rtl : false,
@@ -20,6 +26,7 @@ Ext.define('SP.view.customer.List' ,{
     	    	text : "删除"
     	    }]
     	});
+    	
         this.columns = [
             {header: '负责人',  dataIndex: 'manager',  flex: 1},
             {header: '店面名称', dataIndex: 'storename', flex: 1},   

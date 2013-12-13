@@ -19,7 +19,7 @@ Ext.define('SP.view.customerlevel.Add' ,{
     	        url : "",
     	        items : [{
     	        	fieldLabel: '等级名称',
-        	        name: 'name',
+        	        name: 'value',
         	        allowBlank: false
         	    },{
         	        fieldLabel: '等级描述',
@@ -35,19 +35,7 @@ Ext.define('SP.view.customerlevel.Add' ,{
         	        text: '提交',
         	        formBind: true, //only enabled once the form is valid
         	        disabled: true,
-        	        handler: function() {
-        	            var form = this.up('form').getForm();
-        	            if (form.isValid()) {
-        	                form.submit({
-        	                    success: function(form, action) {
-        	                       Ext.Msg.alert('Success', action.result.msg);
-        	                    },
-        	                    failure: function(form, action) {
-        	                        Ext.Msg.alert('Failed', action.result.msg);
-        	                    }
-        	                });
-        	            }
-        	        }
+        	        action : "submit"
         	    }]
     	 }];
         this.callParent(arguments);

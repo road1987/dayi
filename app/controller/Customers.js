@@ -12,7 +12,7 @@ Ext.define('SP.controller.Customers', {
         this.control({
         	//"viewport" : { render : function(){ alert("viewport render") }}	,
            "customerlist": {
-                itemdblclick: this.editUser
+             //   itemdblclick: this.editUser
            },
            
            "customeredit button[action=save]" : {
@@ -21,11 +21,6 @@ Ext.define('SP.controller.Customers', {
         });
     },
     
-   	editUser: function(grid, record) {
-        var view = Ext.widget('customeredit');
-
-        view.down('form').loadRecord(record);
-    },
     
     updateCustomer : function(button){
 	   var  win    = button.up('window'),

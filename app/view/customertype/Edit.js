@@ -16,10 +16,9 @@ Ext.define('SP.view.customertype.Edit' ,{
     	        defaultType: 'textfield',
     	        buttonAlign: 'left',
     	        border : false,
-    	        url : "",
     	        items : [{
     	        	fieldLabel: '类型名称',
-        	        name: 'name',
+        	        name: 'value',
         	        allowBlank: false
         	    },{
         	        fieldLabel: '类型描述',
@@ -35,19 +34,7 @@ Ext.define('SP.view.customertype.Edit' ,{
         	        text: '提交',
         	        formBind: true, //only enabled once the form is valid
         	        disabled: true,
-        	        handler: function() {
-        	            var form = this.up('form').getForm();
-        	            if (form.isValid()) {
-        	                form.submit({
-        	                    success: function(form, action) {
-        	                       Ext.Msg.alert('Success', action.result.msg);
-        	                    },
-        	                    failure: function(form, action) {
-        	                        Ext.Msg.alert('Failed', action.result.msg);
-        	                    }
-        	                });
-        	            }
-        	        }
+        	        action : "submit"
         	    }]
     	 }];
         this.callParent(arguments);

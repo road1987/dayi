@@ -42,7 +42,7 @@ Ext.define('SP.store.SystemMenu', {
                 	      {id : 'channelLevelMgr', name : '渠道服务商等级' , description : 'distributor level manage(渠道服务商等级管理)'},            	      
                 	      {id : 'standardStore' , name : '标准店折算' , description: ''},
                 	      {id : 'marketingOrgMgr', name : '市场部组织结构' , description : 'marketing organization manage(市场部组织管理)'},    
-                	      {id : 'areaMgr', name : '地区字典' , description : 'area manage(地区字典管理)'}
+                	      {id : 'regionMgr', name : '地区字典' , description : 'region manage(地区字典管理)'}
                  ]
              }
     ]
