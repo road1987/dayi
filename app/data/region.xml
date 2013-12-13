@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<regions text="TREE">
+    <region text="西南区"/>
+    <region text="西北区"/>
+    <region text="东南区">
+      <children>
+        <region text="NODE"/>
+        <region text="NODE"/>
+      </children>
+    </region>
+</regions>
