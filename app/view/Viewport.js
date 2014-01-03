@@ -6,6 +6,7 @@ Ext.define('SP.view.Viewport' ,{
                  'SP.view.SubMenu',
                  'SP.view.customer.List',
                  'SP.view.customer.Edit',
+                 'SP.view.customer.Add',
                  'SP.view.customertype.List',  
                  'SP.view.customertype.Edit',  
                  'SP.view.customertype.Add',  
@@ -18,7 +19,15 @@ Ext.define('SP.view.Viewport' ,{
                  'SP.view.channellevel.List',
                  'SP.view.channellevel.Edit',
                  'SP.view.channellevel.Add',
-                 'SP.view.region.ManagePanel'
+                 'SP.view.businessmode.List',
+                 'SP.view.businessmode.Edit',
+                 'SP.view.businessmode.Add',
+                 'SP.view.region.ManagePanel',
+                 'SP.view.market.ManagePanel',
+                 'SP.view.business.List',
+                 'SP.view.business.Edit',
+                 'SP.view.business.Add',
+                 'SP.view.material.List'
            ],
 
 	layout : 'border',
@@ -70,6 +79,10 @@ Ext.define('SP.view.Viewport' ,{
         	},{
         		xtype : 'customerlist'
         	},{
+        		xtype : 'customeredit'
+        	},{
+        		xtype : 'customeradd'
+        	},{
         		xtype : 'customertypelist'
         	},{
         		xtype : 'customertypeedit'
@@ -88,7 +101,23 @@ Ext.define('SP.view.Viewport' ,{
         	},{
         		xtype : 'channelleveladd'
         	},{
+        		xtype : 'businessmodelist'
+        	},{
+        		xtype : 'businessmodeedit'
+        	},{
+        		xtype : 'businessmodeadd'
+        	},{
         		xtype : 'regionmanagepanel'
+        	},{
+        		xtype : 'marketmanagepanel'
+        	},{
+        		xtype : 'businesslist'
+        	},{
+        		xtype : 'businessedit'
+        	},{
+        		xtype : 'businessadd',
+        	},{
+        		xtype : 'materiallist'
         	}]
         },{
         	id : 'footer',

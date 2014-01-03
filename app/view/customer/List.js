@@ -4,11 +4,11 @@ Ext.define('SP.view.customer.List' ,{
 
     id : 'customerMgrPanel',
     title: '客户信息',
-	store: 'Customers',
+	store: 'Customer',
 	plugins: [{
 		ptype: 'rowexpander',
 		rowBodyTpl : [
-		'<p>{manager}:{storename}</p>'
+		'<p>负责人：{manager}    店面名称:{storename}</p>'
 		]
 	}],
 	
@@ -29,22 +29,28 @@ Ext.define('SP.view.customer.List' ,{
     	
         this.columns = [
             {header: '负责人',  dataIndex: 'manager',  flex: 1},
-            {header: '店面名称', dataIndex: 'storename', flex: 1},   
-            {header: '授牌证号',  dataIndex: 'authorizeid',  flex: 1},            
-            {header: '所属区域',  dataIndex: 'area',  flex: 1},
-            {header: '所属市场部',  dataIndex: 'marketdept',  flex: 1},
-            {header: '地区', dataIndex: 'location', flex: 1},            
-            {header: '经销商',  dataIndex: 'channel',  flex: 1},      
+            {header: '店面名称', dataIndex: 'name', flex: 1},   
+            {header: '授牌证号',  dataIndex: 'authorizationnumber',  flex: 1},            
+            {header: '所属区域',  dataIndex: 'region_name',  flex: 1},
+            {header: '所属市场部',  dataIndex: 'market_name',  flex: 1}, 
+            {header: '经销商',  dataIndex: 'ServiceProvider_name',  flex: 1},      
             {header: '地址',  dataIndex: 'address',  flex: 1},
-            {header: '联系电话',  dataIndex: 'mobilephone',  flex: 1},
+            {header: '联系电话',  dataIndex: 'commonphone',  flex: 1},
             {header: '固定电话',  dataIndex: 'telphone',  flex: 1},
-            {header: '自营/联营',  dataIndex: 'runmode',  flex: 1},        
-            {header: '店面级别',  dataIndex: 'level',  flex: 1},
-            {header: '授牌日期', dataIndex: 'authorizedate', flex: 1},
-            {header: '备注', dataIndex: 'description', flex: 1},
-            {header: '客户类型', dataIndex: 'customertype', flex: 1}
+            {header: '自营/联营',  dataIndex: 'BusinessMode_value',  flex: 1},        
+            {header: '店面级别',  dataIndex: 'CustomerRank_value',  flex: 1},
+            {header: '授牌日期', dataIndex: 'authorizationdate', flex: 1},
+            {header: '备注', dataIndex: 'remark', flex: 1},
+            {header: '客户类型', dataIndex: 'CustomerType_value', flex: 1}
         ];
-
+        
+        this.dockedItems = [{
+            xtype: 'pagingtoolbar',
+            store: 'Customer',   // same store GridPanel is using
+            dock: 'bottom',
+            displayInfo: true
+        }];
+        
         this.callParent(arguments);
     }
 });

@@ -17,6 +17,9 @@ Ext.define('SP.view.MainMenu' ,{
     	
     	Ext.apply(this, {
     		tpl : tpl,
+            selModel: {
+                deselectOnContainerClick: false
+            },
     		itemSelector : 'li.js-main-menuitem'
     	});
 

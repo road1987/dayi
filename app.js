@@ -1,7 +1,7 @@
 Ext.application({
 		name: 'SP',
 		autoCreateViewport : true,
-		controllers : ['Customers' , 'CustomerType' , 'CustomerLevel', 'SystemMenu','ChannelType','ChannelLevel'],
-		models : ['Customer','CustomerType','CustomerLevel','ChannelType','ChannelLevel' , 'Region'],
-		stores : ['Customers' , 'SystemMenu', 'CustomerType' , 'CustomerLevel', 'ChannelType', 'ChannelLevel', 'Region']
+		controllers : ['Customer' , 'CustomerType' , 'CustomerLevel', 'SystemMenu','ChannelType','ChannelLevel','BusinessMode','Region','Market','Business','Material'],
+		models : ['Customer','CustomerType','CustomerLevel','ChannelType','ChannelLevel','BusinessMode','Region','Market','Business','Material'],
+		stores : ['Customer' , 'SystemMenu', 'CustomerType' , 'CustomerLevel', 'ChannelType', 'ChannelLevel','BusinessMode','Region','Market','Business','Material']
 });

@@ -7,9 +7,9 @@ Ext.define('SP.store.SystemMenu', {
             	 id : 'baseInfoMgr' , 
             	 name : '信息管理' , 
             	 items : [
-                	  {id : 'productMgr' , name : '物料管理' , description: 'product manage(物料管理)'},
+                	  {id : 'materialMgr' , name : '物料管理' , description: 'material manage(物料管理)'},
             	      {id : 'customerMgr' , name : '客户管理' , description: 'retailer manage(客户管理)'},
-            	      {id : 'distributorMgr', name : '渠道服务商管理' , description : 'distributor manage(渠道服务商管理)'}
+            	      {id : 'businessMgr', name : '渠道服务商管理' , description : 'business manage(渠道服务商管理)'}
             	 ],
             	 description : 'base infomation manage (基础信息管理)'
              },
@@ -40,9 +40,10 @@ Ext.define('SP.store.SystemMenu', {
                 	      {id : 'customerLevelMgr', name : '客户等级' , description : 'customer level manage(客户等级管理)'},      
             	          {id : 'channelTypeMgr', name : '渠道服务商分类' , description : 'distributor type manage(渠道服务商分类管理)'},
                 	      {id : 'channelLevelMgr', name : '渠道服务商等级' , description : 'distributor level manage(渠道服务商等级管理)'},            	      
-                	      {id : 'standardStore' , name : '标准店折算' , description: ''},
-                	      {id : 'marketingOrgMgr', name : '市场部组织结构' , description : 'marketing organization manage(市场部组织管理)'},    
-                	      {id : 'regionMgr', name : '地区字典' , description : 'region manage(地区字典管理)'}
+                	      {id : 'regionMgr', name : '地区字典' , description : 'region manage(地区字典管理)'},
+                	      {id : 'marketMgr', name : '市场部组织结构' , description : 'marketing organization manage(市场部组织管理)'},    
+                	      {id : 'businessModeMgr' , name : '经营模式', description : 'business mode manage(客户经营模式管理)'}
+
                  ]
              }
     ]

@@ -1,13 +1,23 @@
 Ext.define('SP.model.ChannelType', {
     extend: 'Ext.data.Model',
-    fields: [{name: 'id', mapping: 'channel-id'},{name: 'name', mapping: 'channel-name'}, 'description'],
+    requires : ['SP.extend.data.writer.QueryString'],
+    fields: ['id','value', 'description'],
     proxy: {
         type: 'ajax',
-        url: 'app/data/channel-type.xml',
+        api : {
+            read: 'platform/admin?actid=1031',
+            create: 'platform/admin?actid=1032',
+            update: 'platform/admin?actid=1033',
+            destroy: ''
+       },
         reader: {
             type: 'xml',
-            root: 'types',
-            record : 'type',
+            root: 'data',
+            record : 'ServiceProviderType',
+            successProperty: 'state'
+        },
+        writer : {
+        	type : 'querystring'
         }
     }
 });

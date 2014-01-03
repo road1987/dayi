@@ -24,6 +24,11 @@ Ext.define('SP.controller.CustomerLevel', {
     
     init: function() {
         this.control({
+           "customerlevellist" : {
+           	 render : function(comp){
+           		 comp.getStore().load();
+           	 }
+           },
            "customerlevellist button[action=add]": {
                click: this.showAddLevelPanel
            },

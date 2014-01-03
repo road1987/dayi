@@ -25,6 +25,11 @@ Ext.define('SP.controller.CustomerType', {
     
     init: function() {
         this.control({
+            "customertypelist" : {
+              	 render : function(comp){
+              		 comp.getStore().load();
+              	 }
+              },
            "customertypelist button[action=add]": {
                click: this.showAddTypePanel
            },

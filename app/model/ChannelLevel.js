@@ -1,14 +1,23 @@
 Ext.define('SP.model.ChannelLevel', {
     extend: 'Ext.data.Model',
-    fields: ['id', 'name' , 'description'],
+    requires : ['SP.extend.data.writer.QueryString'],
+    fields: ['id', 'value', 'description'],
     proxy: {
         type: 'ajax',
-        url: 'app/data/channel-level.xml',
+        api : {
+            read: 'platform/admin?actid=1021',
+            create: 'platform/admin?actid=1022',
+            update: 'platform/admin?actid=1023',
+            destroy: ''
+       },
         reader: {
             type: 'xml',
-            root: 'customerlevel',
-            record : 'level',
-            successProperty: 'success'
+            root: 'data',
+            record : 'ServiceProviderRank',
+            successProperty: 'state'
+        },
+        writer : {
+        	type : 'querystring'
         }
     }
 });
