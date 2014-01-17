@@ -1,4 +1,10 @@
 Ext.define('SP.view.customer.Add' ,{
+	requires : ['SP.store.CustomerType',
+	            'SP.store.Business',
+	            'SP.store.BusinessMode', 
+	            'SP.store.CustomerLevel',
+	            'SP.extend.ux.DateTimeField',
+	            'SP.extend.ux.TreeCombo'],
     extend: 'Ext.panel.Panel',
     alias: 'widget.customeradd',
 
@@ -58,7 +64,8 @@ Ext.define('SP.view.customer.Add' ,{
             	        fieldLabel: '授牌日期',
             	        name: 'authorizationdate',
             	        allowBlank: false,
-            	        format: 'Y-m-d',
+    	        		editable: false, 
+            	        format: 'Y-m-d'
         	        }]
     	        },{ 
     	        	defaults : {
@@ -69,10 +76,51 @@ Ext.define('SP.view.customer.Add' ,{
     	        	items : [{
         	        	xtype : 'treecombo',
             	        fieldLabel: '所属市场部',
+    	        		editable: false, 
             	        name: 'market',
             	        allowBlank: false,
             	        store : null,
                         rootVisible: false
+        	        },{
+    	        		xtype : 'combobox',
+            	        fieldLabel: '经销商',
+                		emptyText: "授牌证号/负责人/店面名称",
+            	        hideTrigger: false, 
+            	       // typeAhead: true ,
+            	        name: 'ServiceProvider',
+            	        allowBlank: false,
+    	        		store: new SP.store.Business(),//parameter could be {pageSize:10} etc.....
+            	        displayField : 'name',
+            	        valueField : 'id',
+    	        		editable: false, 
+            	        //minChars: 1,
+            	        listConfig: {
+            	                loadingText: 'Searching...',
+            	                emptyText: 'No matching posts found.',
+
+            	                // Custom rendering template for each item
+            	                getInnerTpl: function() {
+            	                    return '<div style="border-bottom:1px dotted gray;"><div>负责人:{manager}</div>' + '<div>{name}</div></div>';
+            	                }
+            	        }
+            	       // queryParam : 'search-data',
+            	       // pageSize: true
+        	        }]
+    	        },{
+    	        	defaults : {
+    	        		xtype : 'textfield',
+    	        		flex : 1,
+    	        		padding : '0 60px 0 0'
+    	        	},
+    	        	items : [{
+        	        	xtype : 'combobox',
+        	        	editable: false, 
+            	        fieldLabel: '客户类型',
+            	        name: 'CustomerType',
+            	        allowBlank: false,
+            	        store : new SP.store.CustomerType(),
+            	        displayField : 'value',
+            	        valueField : 'id'
         	        },{
         	        	xtype : 'treecombo',
         	        	editable: false, 
@@ -90,35 +138,8 @@ Ext.define('SP.view.customer.Add' ,{
     	        	},
     	        	items : [{
     	        		xtype : 'combobox',
-            	        fieldLabel: '经销商',
-            	        hideTrigger: true, 
-            	        typeAhead: true ,
-            	        name: 'ServiceProvider',
-            	        allowBlank: false,
-    	        		store: new SP.store.Business(),
-            	        displayField : 'name',
-            	        valueField : 'id',
-            	        minChars: 1
-        	        },{
-        	        	xtype : 'combobox',
-        	        	editable: false, 
-            	        fieldLabel: '客户类型',
-            	        name: 'CustomerType',
-            	        allowBlank: false,
-            	        store : new SP.store.CustomerType(),
-            	        displayField : 'value',
-            	        valueField : 'id'
-        	        }]
-    	        },{
-    	        	defaults : {
-    	        		xtype : 'textfield',
-    	        		flex : 1,
-    	        		padding : '0 60px 0 0'
-    	        	},
-    	        	items : [{
-    	        		xtype : 'combobox',
     	        		editable: false, 
-            	        fieldLabel: '自营/联营',
+            	        fieldLabel: '经营方式',
             	        name: 'BusinessMode',
             	        allowBlank: false,
             	        store : new SP.store.BusinessMode(),
@@ -170,6 +191,23 @@ Ext.define('SP.view.customer.Add' ,{
             	        fieldLabel: '备注',
             	        name: 'remark',
             	        allowBlank: true
+        	        }]
+    	        },{
+    	        	defaults : {
+    	        		xtype : 'hiddenfield',
+    	        	},
+    	        	items : [{
+            	        name: 'status',
+            	        value: '1'
+        	        },{
+            	        name: 'coefficient',
+            	        value: '1'
+        	        },{
+            	        name: 'StandardAmount',
+            	        value: '1'
+        	        },{
+        	        	name : 'chargemarket',
+        	        	value : '0'
         	        }]
     	        }],
     	        buttons : [/*{

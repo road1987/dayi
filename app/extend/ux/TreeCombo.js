@@ -154,21 +154,22 @@ Ext.define('SP.extend.ux.TreeCombo',
 		me.recursivePush(node, false);
 		
 		me.records = [];
-		Ext.each(me.recursiveRecords, function(record)
-		{
-			var	id = record.get(me.valueField),
-				index = values.indexOf(''+id);
-		
-			if(me.multiselect == true) record.set('checked', false);
-			
-			if(index != -1)
+			Ext.each(me.recursiveRecords, function(record)
 			{
-				valueFin.push(record.get(me.displayField));
-				if(me.multiselect == true) record.set('checked', true);
-				me.addRecord(record);
-			}
-		});
-
+				var	id = record.get(me.valueField),
+				/******** modified by hongchun.li  for fix ie indexOf bug********/
+					//index = values.indexOf(''+id);
+				index = Ext.Array.indexOf( values , ''+id);
+			
+				if(me.multiselect == true) record.set('checked', false);
+				
+				if(index != -1)
+				{
+					valueFin.push(record.get(me.displayField));
+					if(me.multiselect == true) record.set('checked', true);
+					me.addRecord(record);
+				}
+			});
 
 		me.value = valueInit;
 		me.setRawValue(valueFin.join(', '));
@@ -258,8 +259,11 @@ Ext.define('SP.extend.ux.TreeCombo',
 	addIds: function(record)
 	{
 		var	me = this;
-		
-		if(me.ids.indexOf(''+record.getId()) == -1) me.ids.push(''+record.get(me.valueField));
+		/******modify by hongchun.li for fix ie indexOf bug*****/
+		//if(me.ids.indexOf(''+record.getId()) == -1){
+		if(Ext.Array.indexOf( me.ids , ''+record.getId())){
+			me.ids.push(''+record.get(me.valueField));
+		}
 	},
 	removeIds: function(record)
 	{

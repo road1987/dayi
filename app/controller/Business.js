@@ -15,6 +15,12 @@ Ext.define('SP.controller.Business', {
     	ref : 'businessList',
         selector : "viewport > #main > businesslist"
     },{
+    	ref : 'complexQueryPanel',
+    	selector : "viewport > #main > businesslist > panel[itemId=complexQueryPanel]"
+    },{
+    	ref : 'businessListGrid',
+        selector : "viewport > #main > businesslist > grid"
+    },{
     	ref : 'businessEdit',
         selector : "viewport > #main > businessedit"
     },{
@@ -24,7 +30,43 @@ Ext.define('SP.controller.Business', {
     
     init: function() {
         this.control({
-            "businesslist" : {
+        	"businesslist  treepanel[itemId=marketTree]" : {
+        		render : function(comp){
+        			this.loadMarketTreeData(function(rootNode){
+        				comp.setRootNode(rootNode);
+        			});
+        		}
+        	},           
+
+        	"businesslist  treepanel[itemId=regionTree]" : {
+        		render : function(comp){
+        			this.loadRegionTreeData(function(rootNode){
+        				comp.setRootNode(rootNode);
+        			});
+        		}
+        	},
+        	//register event for complex query
+        	"businesslist panel[itemId=complexQueryPanel] treepanel" : {
+        		selectionchange : this.queryBusinessByComplex
+        	},
+        	//register event for complex query
+        	"businesslist panel[itemId=complexQueryPanel] treepanel" : {
+        		selectionchange : this.queryBusinessByComplex
+        	},
+        	//register event for complex query
+        	"businesslist panel[itemId=complexQueryPanel] combobox" : {
+        		change : this.queryBusinessByComplex,
+        		render : function(comp){
+        			var store = comp.getStore();
+        			store.on('load', function(store, records, options ){   
+	                    var data ={ "id": "", "value": "不限"};   
+	                    store.insert(0,[data]);  
+	                    comp.setValue("");
+        			});
+        			store.load();
+        		}
+        	},
+            "businesslist > grid" : {
             	 render : function(comp){
             		 comp.getStore().load();
             	 }
@@ -37,8 +79,19 @@ Ext.define('SP.controller.Business', {
            "businesslist button[action=edit]": {
             	click : this.showEditBusinessPanel
            },
+           "businesslist > grid button[action=queryByKeyword]": {
+          	 	click : this.queryBusinessByKeyword
+           },
+           
+           "businesslist > grid textfield[name=keyword]": {
+           	specialkey : function(comp , e){
+           		if(e.getKey()==e.ENTER){  
+           			this.queryBusinessByKeyword(comp);
+           		}
+           	}
+           },
           
-           "businessedit button[action=submit]" : {
+           "businessadd button[action=submit]" : {
           		click : this.addBusiness
            },
           
@@ -60,7 +113,14 @@ Ext.define('SP.controller.Business', {
         
            "businessedit treecombo[name=market]" : {
      	   		render : this.loadMarketTree
-         },
+           },
+           "businessadd treecombo[name=region]" : {
+     	   		render : this.loadRegionTree
+           },
+       
+           "businessadd treecombo[name=market]" : {
+    	   		render : this.loadMarketTree
+           }
         });
     },//end of init
 	
@@ -74,8 +134,7 @@ Ext.define('SP.controller.Business', {
     },
     
     showEditBusinessPanel : function(){
-    	var businessList = this.getBusinessList();
-    	var selectedItems = businessList.getSelectionModel().getSelection();
+    	var selectedItems = this.getBusinessListGrid().getSelectionModel().getSelection();
     	if(selectedItems.length <= 0 ){
     		Ext.Msg.alert("提示" ,"未选中任何数据！");
     		return false;
@@ -90,11 +149,11 @@ Ext.define('SP.controller.Business', {
     	var mainPanel = this.getMainpanel();
     	var businessList = this.getBusinessList();
     	mainPanel.getLayout().setActiveItem(businessList);
-    	businessList.getStore().load();
+    	this.getBusinessListGrid().getStore().load();
     },
     
     addBusiness : function(){
-      	 var businessAddPanel = this.getBusinessAddPanel();
+      	 var businessAddPanel = this.getBusinessAdd();
 	     var form = businessAddPanel.down('form');
 	     var business = Ext.create( "SP.model.Business" , form.getValues());
 	   
@@ -102,14 +161,13 @@ Ext.define('SP.controller.Business', {
 	    	 success : function(){
 	    		 Ext.Msg.alert("提示" ,"成功添加记录");
 	    	 },
-	    	 error : function(){
+	    	 failure : function(){
 	    		 Ext.Msg.alert("提示" ,"添加记录失败,请重试");
 	    	 }
 	     });    	
     },
     
     updateBusiness : function(){
-    	alert(1);
 	   	var businessEditPanel = this.getBusinessEdit();
 	    var form = businessEditPanel.down('form');
         var record = form.getRecord();
@@ -118,7 +176,7 @@ Ext.define('SP.controller.Business', {
 	    	 success : function(){
 	    		 Ext.Msg.alert("提示" ,"成功修改记录!");
 	    	 },
-	    	 error : function(){
+	    	 failure : function(){
 	    		 Ext.Msg.alert("提示" ,"修改记录失败,请重试!");
 	    	 }
 	     }); 
@@ -133,14 +191,17 @@ Ext.define('SP.controller.Business', {
     	        var rootNode = SP.extend.util.XmlParserToTreeData.getNodes(text);
     	        comp.tree.setRootNode(rootNode);
     	        
-    	        var businessList = me.getBusinessList(),
-	      		selectedItems = businessList.getSelectionModel().getSelection(),
+	      		selectedItems = me.getBusinessListGrid().getSelectionModel().getSelection(),
 	      		businessEditPanel = me.getBusinessEdit(),
 	    	    form = businessEditPanel.down('form').getForm(),
 	    	    marketField = form.findField("market");
 	    	    
-	    	marketField.setValue(selectedItems[0].get('market'));
-	    	form.isValid();
+    	        if(selectedItems[0] == null){
+    	        	marketField.setValue('');
+    	        }else{
+    	        	marketField.setValue(selectedItems[0].get('market'));
+    	        }
+    	        form.isValid();
     	    }
     	});    	
     },
@@ -154,15 +215,89 @@ Ext.define('SP.controller.Business', {
     	        var rootNode = SP.extend.util.XmlParserToTreeData.getNodes(text);
     	        comp.tree.setRootNode(rootNode);
     	        
-    	        var businessList = me.getBusinessList(),
-	      		selectedItems = businessList.getSelectionModel().getSelection(),
+	      		selectedItems = me.getBusinessListGrid().getSelectionModel().getSelection(),
 	    		businessEditPanel = me.getBusinessEdit(),
 	    	    form = businessEditPanel.down('form').getForm(),
 	    	    regionField = form.findField("region");
-    	    
-	      	regionField.setValue(selectedItems[0].get('region'));
-	      	form.isValid();
+    	        
+    	        if(selectedItems[0] == null){
+    	        	regionField.setValue('');
+    	        }else{
+    	        	regionField.setValue(selectedItems[0].get('region'));
+    	        }
+    	        form.isValid();
     	    }
     	});
+    },
+    loadRegionTreeData : function(callback){
+    	var me = this;
+		Ext.Ajax.request({
+    	    url: 'platform/admin?actid=1061',
+    	    success: function(response){
+    	        var text = response.responseText;
+    	        var rootNode = SP.extend.util.XmlParserToTreeData.getNodes(text);
+    	        if(callback && typeof callback == "function"){
+    	        	callback(rootNode);
+    	        }
+    	    }
+		});
+    },
+    
+    loadMarketTreeData : function(callback){
+    	var me = this;
+		Ext.Ajax.request({
+    	    url: 'platform/admin?actid=1051',
+    	    success: function(response){
+    	        var text = response.responseText;
+    	        var rootNode = SP.extend.util.XmlParserToTreeData.getNodes(text);
+    	        if(callback && typeof callback == "function"){
+    	        	callback(rootNode);
+    	        }
+    	    }
+    	});    	
+    },
+    loadRegionTreeForBusinessQuery : function(comp){
+    	this.loadRegionTreeData(function(rootNode){
+    		comp.tree.setRootNode(rootNode);
+    	});
+    },
+    
+    loadMarketTreeForBusinessQuery : function(comp){
+    	this.loadMarketTreeData(function(rootNode){
+    		comp.tree.setRootNode(rootNode);
+    	});
+    },
+    
+    queryBusinessByKeyword : function(comp){
+    	var grid = this.getBusinessListGrid();
+    	var keyword = grid.down("textfield[name=keyword]").getValue();
+    	var store = grid.getStore();
+    	store.getProxy().api.read = "platform/admin?actid=1076";
+    	store.getProxy().extraParams = {
+    		"search-data" : keyword
+    	};
+    	store.loadPage(1);
+    },
+    
+    queryBusinessByComplex : function(comp){
+    	var panel = this.getComplexQueryPanel(),
+    		tabPanel = panel.down("tabpanel"),
+    		activeTree = tabPanel.getActiveTab(),
+    		businessRank = panel.down("combobox[name=BusinessRank]").getValue(),
+    		businessType = panel.down("combobox[name=BusinessType]").getValue(),
+    		treeType = activeTree.itemId === 'marketTree' ? 2 : 1,
+    		selectedNode = activeTree.getSelectionModel().getSelection(),
+    		selectedNodeId = selectedNode[0] ? selectedNode[0].data.id : -1;
+    		
+    	var grid = this.getBusinessListGrid();	
+    	var store = grid.getStore();
+    	store.getProxy().api.read = "platform/admin?actid=1077";
+    	store.getProxy().extraParams = {
+    		"treetype" : treeType,
+    		"treeid" : selectedNodeId,
+    		"serviceproviderrank" : businessRank,
+    		"serviceprovidertype" : businessType
+    	};
+    	store.loadPage(1);	
     }
 });

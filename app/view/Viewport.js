@@ -27,7 +27,9 @@ Ext.define('SP.view.Viewport' ,{
                  'SP.view.business.List',
                  'SP.view.business.Edit',
                  'SP.view.business.Add',
-                 'SP.view.material.List'
+                 'SP.view.material.List',
+                 'SP.view.distributeplan.Add',
+                 'SP.view.distributeplan.List'
            ],
 
 	layout : 'border',
@@ -56,7 +58,7 @@ Ext.define('SP.view.Viewport' ,{
             region:'west',
             border: false,
             split:true,
-            width: 280,
+            width: 260,
             minSize: 100,
             maxSize: 500,
             items : [{ 
@@ -115,9 +117,13 @@ Ext.define('SP.view.Viewport' ,{
         	},{
         		xtype : 'businessedit'
         	},{
-        		xtype : 'businessadd',
+        		xtype : 'businessadd'
         	},{
         		xtype : 'materiallist'
+        	},{
+        		xtype : 'distributeplanadd'
+        	},{
+        		xtype : 'distributeplanlist'
         	}]
         },{
         	id : 'footer',

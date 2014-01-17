@@ -17,13 +17,11 @@ Ext.define('SP.view.market.ManagePanel' ,{
     	});
     	this.items = [{	
     		region:'center',
-            margin: '0 5 5 5',
+            margin: '0 0 5 0',
             border: false,
 			xtype : 'treepanel',
 			itemId : 'tree',
 			useArrows: true,
-            width: 320,
-            bodyPadding :10,
             model : 'SP.model.TreeNode',
             rootVisible: true,
             columns :[{

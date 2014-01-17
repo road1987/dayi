@@ -26,8 +26,11 @@ Ext.define('SP.model.Business', {
 	    pageParam: 'page-index', 
         startParam: false, //to remove param "start"
         limitParam: 'page-size', //to remove param "limit"
+        actionMethods: {
+            read: 'POST'
+        },
 	    api : {
-	         read: 'platform/admin?actid=1071',
+	         read: 'platform/admin?actid=1076',
 	         create: 'platform/admin?actid=1072',
 	         update: 'platform/admin?actid=1073',
 	         destroy: ''

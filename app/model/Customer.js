@@ -5,8 +5,9 @@ Ext.define('SP.model.Customer', {
 	         {name : 'region_name' , mapping : 'region@name'} , 	         
 	         {name : 'market', mapping : 'market@id'},
 	         {name : 'market_name' , mapping : 'market@name'} , 
-	         'chargemarket' ,
-	         'name',
+	         {name : 'chargemarket' , mapping : 'chargemarket@id'} , 
+	         {name : 'chargemarket_name' , mapping : 'chargemarket@name'} , 	         
+	         {name : 'name' , mapping : '>name'} , 
 	         'manager',
 	         'address',
 	         'commonphone',
@@ -21,7 +22,8 @@ Ext.define('SP.model.Customer', {
 	         {name : 'ServiceProvider' , mapping : 'ServiceProvider > id'},
 	         {name : 'ServiceProvider_name' , mapping : 'ServiceProvider > name'},
 	         'authorizationnumber',
-	         'authorizationdate',
+	      //   'authorizationdate',
+	         {name : 'authorizationdate' , mapping : 'authorizationdate'},	         
 	         'status',
 	         'coefficient',
 	         'remark',
@@ -34,8 +36,11 @@ Ext.define('SP.model.Customer', {
         pageParam: 'page-index', 
         startParam: false, //to remove param "start"
         limitParam: 'page-size', //to remove param "limit"
+        actionMethods: {
+            read: 'POST'
+        },
 	    api : {
-	         read: 'platform/admin?actid=1081',
+	         read: 'platform/admin?actid=1086',
 	         create: 'platform/admin?actid=1082',
 	         update: 'platform/admin?actid=1083',
 	         destroy: ''

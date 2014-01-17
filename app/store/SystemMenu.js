@@ -18,8 +18,8 @@ Ext.define('SP.store.SystemMenu', {
             	 name : '配货管理',
             	 description : 'deliver goods manager(配货管理)',
             	 items : [
-               	       {id : 'queryDeliverPlan' , name : '配货计划查询' , description : 'deliver goods plan query(配货计划查询)'},
-            	       {id : 'createDeliverPlan' , name : '创建配货计划' , description : 'create deliver goods plan(创建配货计划)'}
+               	       {id : 'distributePlanList' , name : '配货计划查询' , description : 'distribute plan query(配货计划查询)'},
+            	       {id : 'distributePlanAdd' , name : '创建配货计划' , description : 'create distribute plan(创建配货计划)'}
             	 ]
              },
              {

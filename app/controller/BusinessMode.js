@@ -89,7 +89,7 @@ Ext.define('SP.controller.BusinessMode', {
    	    		 Ext.Msg.alert("提示" ,"成功添加记录");
    	    		 form.reset();
    	    	 },
-   	    	 error : function(){
+   	    	 failure : function(){
    	    		 Ext.Msg.alert("提示" ,"添加记录失败,请重试");
    	    	 }
    	     });
@@ -104,7 +104,7 @@ Ext.define('SP.controller.BusinessMode', {
 	    	 success : function(){
 	    		 Ext.Msg.alert("提示" ,"成功修改记录!");
 	    	 },
-	    	 error : function(){
+	    	 failure : function(){
 	    		 Ext.Msg.alert("提示" ,"修改记录失败,请重试!");
 	    	 }
 	     });

@@ -1,15 +1,13 @@
-Ext.define('SP.view.customer.List' ,{
-	requires : ['Ext.tab.Panel'],
+Ext.define('SP.view.distributeplan.List' ,{
     extend: 'Ext.panel.Panel',
-    alias: 'widget.customerlist',
+    alias: 'widget.distributeplanlist',
 
-    id : 'customerMgrPanel',
-    title: '客户信息',
+    id : 'distributePlanListPanel',
+    title: '配货计划查询',
 	layout : 'border',
     initComponent: function() {
     	this.items = [{
             	xtype : 'panel',
-            	itemId : 'complexQueryPanel',
                 title : '复合查询',
             	region:'west',
                 split:false,
@@ -57,25 +55,7 @@ Ext.define('SP.view.customer.List' ,{
                 	        store : new SP.store.CustomerLevel(),
                 	        displayField : 'value',
                 	        valueField : 'id'
-            	        }/*,{ 
-            	        	xtype : 'treecombo',
-                	        fieldLabel: '组织结构',
-                	        name: 'market',
-                	        store : null,
-                            rootVisible: false
-            	          },{
-            	        	xtype : 'treecombo',
-            	        	editable: false, 
-            	        	width : 300,
-                	        fieldLabel: '所属区域',
-                	        name: 'region',
-                	        store : null,
-                            rootVisible: false
-        	              },{ 
-                	        fieldLabel: '所属组织',
-            	        	width : 300,
-                	        name: 'market'
-            	          }*/]
+            	        }]
         	 },{
         		xtype :'tabpanel',
         		margin : '0px 10px',
@@ -111,12 +91,11 @@ Ext.define('SP.view.customer.List' ,{
             		rtl : false,
             	    items: ["->",{
             	    	width : 200,
-            	    	name : "keyword",
                 		xtype : "textfield",
                 		emptyText: "授牌证号/负责人/店面名称"
             	    },{
             	    	text: "查询",
-            	    	action : "queryByKeyword"
+            	    	action : "search"
             	    },
             	    "->",{
             	    	action : "add",
@@ -139,7 +118,7 @@ Ext.define('SP.view.customer.List' ,{
             	            {header: '地址',  dataIndex: 'address',  flex: 1 , hidden:true },
             	            {header: '联系电话',  dataIndex: 'commonphone',  flex: 1, hidden:true },
             	            {header: '固定电话',  dataIndex: 'telphone',  flex: 1, hidden:true },
-            	            {header: '经营方式',  dataIndex: 'BusinessMode_value',  flex: 1, hidden:true },        
+            	            {header: '自营/联营',  dataIndex: 'BusinessMode_value',  flex: 1, hidden:true },        
             	            {header: '店面级别',  dataIndex: 'CustomerRank_value',  flex: 1, hidden:true },
             	            {header: '授牌日期', dataIndex: 'authorizationdate', flex: 1, hidden:true },
             	            {header: '备注', dataIndex: 'remark', flex: 1, hidden:true },

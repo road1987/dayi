@@ -75,7 +75,7 @@ Ext.define('SP.controller.Region', {
 	    	    selectItem[0].expand();
 	    	    treePanel.getSelectionModel().select(treeNode);
 	    	 },
-	    	 error : function(){
+	    	 failure : function(){
 	    		 Ext.Msg.alert("提示" ,"添加记录失败,请重试!");
 	    	 }    		
     	});
@@ -102,7 +102,7 @@ Ext.define('SP.controller.Region', {
 	    		 treePanel.getView().refresh();
 	    		 Ext.Msg.alert("提示" ,"成功修改记录!");
 	    	 },
-	    	 error : function(){
+	    	 failure : function(){
 	    		 Ext.Msg.alert("提示" ,"修改记录失败,请重试!");
 	    	 }
 	     });
