@@ -168,3 +168,7 @@
 	background-position : 0px -42px;	
 }
 
+/* extend EXT */
+.gridpanel-row-unchecked{
+	background-color : #F2DEDE;
+}
