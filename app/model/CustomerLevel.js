@@ -1,7 +1,7 @@
 Ext.define('SP.model.CustomerLevel', {
 	requires : ['SP.extend.data.writer.QueryString'],
     extend: 'Ext.data.Model',
-    fields: ['id', 'value' , 'description'],
+    fields: ['id', 'value' , 'description' ,'amount' , 'minamount'  , 'maxamount'],
     proxy: {
         type: 'ajax',
         api : {

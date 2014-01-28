@@ -1,4 +1,8 @@
 Ext.define('SP.view.distributeplan.Add' ,{
+	requires : ['SP.view.distributeplan.CreatePlan' ,
+	            'SP.view.distributeplan.ChooseMaterial',
+	            'SP.view.distributeplan.ChooseCustomer',
+	            'SP.view.distributeplan.DistributeParam'],
     extend: 'Ext.panel.Panel',
     alias: 'widget.distributeplanadd',
     
@@ -8,27 +12,28 @@ Ext.define('SP.view.distributeplan.Add' ,{
 	
     initComponent: function() {
     	var me = this;
-    	this.tbar = [
-    	            {
-    	                id: 'move-prev',
+    	this.tbar = [{
+    	                action: 'move-prev',
     	                text: '上一步',
-    	                handler: function(btn) {
-    	                    navigate(btn.up("panel"), "prev");
-    	                },
     	                disabled: true
     	            },
     	            '->', // greedy spacer so that the buttons are aligned to each side
     	            {
-    	                id: 'move-next',
-    	                text: '下一步',
-    	                handler: function(btn) {
-    	                    navigate(btn.up("panel"), "next");
-    	                }
-    	}];
+            	    	action : "move-next",
+    	                text: '下一步'
+			    	},{
+			    		hidden : true,
+				    	action : "finish",
+			            text: '完成'
+    				}];
     	this.items = [{
-    		html : 'first step'
+    		xtype : 'createplan'
     	},{
-    		html : 'second step'
+    		xtype : 'choosematerial'
+    	},{
+    		xtype : 'choosecustomer'
+    	},{
+    		xtype : 'distributeparam'
     	}];
         this.callParent(arguments);
     }

@@ -27,7 +27,9 @@ Ext.define('SP.model.Customer', {
 	         'status',
 	         'coefficient',
 	         'remark',
-	         'StandardAmount'
+	         'StandardAmount',
+	         
+	         {name: 'isSupply',    type: 'boolean', defaultValue: true} //added for bussiness 
 	],
 	
 	   
