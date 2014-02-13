@@ -1,4 +1,4 @@
-Ext.define('SP.store.DistributePlan', {
+Ext.define('SP.store.DistributePlanUnpublish', {
     extend: 'Ext.data.Store',
 	requires : ['SP.model.DistributePlan'],
     model : 'SP.model.DistributePlan',
@@ -8,11 +8,14 @@ Ext.define('SP.store.DistributePlan', {
         pageParam: 'page-index', 
         startParam: false, //to remove param "start"
         limitParam: 'page-size', //to remove param "limit"
+        extraParams : {
+        	status : '2'
+        },
         actionMethods: {
             read: 'POST'
         },
 	    api : {
-	         read: 'platform/admin?actid=1101',
+	         read: 'platform/admin?actid=1106',
 	    },
 	    reader: {
 	        type: 'xml',

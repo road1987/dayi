@@ -41,13 +41,16 @@ Ext.define('SP.controller.SystemMenu', {
     		subMenuView.getLayout().setActiveItem(index);
     		
     	var subMenuItem = subMenuView.getLayout().getActiveItem();
+			subMenuItem.getSelectionModel().deselectAll();
     		subMenuItem.getSelectionModel().select(0);
     },
     
     /*show current selected submenuitem operate panel*/
     showContent : function(comp,record,evt){
-    	var panelId = record[0].data.id + 'Panel';
-    	var mainPanel = this.getMainpanel();
-    	mainPanel.getLayout().setActiveItem(panelId);
+    	if(record.length > 0){ //deselect also trigger this method , so 
+	    	var panelId = record[0].data.id + 'Panel';
+	    	var mainPanel = this.getMainpanel();
+	    	mainPanel.getLayout().setActiveItem(panelId);
+    	}
     }
 });

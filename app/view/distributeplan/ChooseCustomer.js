@@ -7,6 +7,7 @@ Ext.define('SP.view.distributeplan.ChooseCustomer' ,{
     layout: 'anchor',
     itemId : 'choosecustomer',
     initComponent: function() {
+    	var customerStore = new SP.store.Customer();
     	this.items = [{
     			border : false,
     			bodyPadding : "0 0 0 10px",
@@ -90,7 +91,7 @@ Ext.define('SP.view.distributeplan.ChooseCustomer' ,{
                 },{
                 	region : 'center',
                 	xtype : 'grid',
-                	store: 'Customer',
+                	store: new SP.store.Customer(),
                 	viewConfig: {
                 	    getRowClass: function(record) {
                 	        if(record && !record.get('isSupply')) {

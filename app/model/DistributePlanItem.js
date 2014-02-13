@@ -1,4 +1,4 @@
-Ext.define('SP.model.Customer', {
+Ext.define('SP.model.DistributePlanItem', {
     extend: 'Ext.data.Model',
 	fields: ['id', 
 	         'name',

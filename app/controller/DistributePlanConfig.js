@@ -31,6 +31,9 @@ Ext.define('SP.controller.DistributePlanConfig', {
     },{
         ref : 'chooseMaterialGrid',
         selector : "viewport > #main > distributeplanadd > choosematerial > grid"
+    },{
+        ref : 'distributeParamGrid',
+        selector : "viewport > #main > distributeplanadd > distributeparam  grid"
     }],
     
     init: function() {
@@ -44,7 +47,7 @@ Ext.define('SP.controller.DistributePlanConfig', {
     	this.customerRanks = [];
     	
         this.control({
-           "distributeplanlist > grid" : {
+           "distributeplanlist  grid" : {
         	 render : function(comp){
         		 comp.getStore().load();
         	 }
@@ -64,16 +67,16 @@ Ext.define('SP.controller.DistributePlanConfig', {
            
            "distributeplanadd > choosecustomer grid" : {
         	   render : function(comp){
-        		   comp.getStore().on("load",function(store, records, successful, eOpts){
+        		   // after loaded new data , check if customers has been added into me.customers
+        		   comp.getStore().on("load", function(store, records, successful, eOpts){
         	    		if(successful){
-        	    			Ext.each(this.customers , function(customer , index){
-        	    				var selectedItem = store.get(customer.id);
+        	    			Ext.each(me.customers , function(customer , index){
+        	    				var selectedItem = store.getById(customer.id);
         	    				if(selectedItem){
-        	    					alert("sss");
+        	    					selectedItem.set('isSupply' , false);
         	    				}
         	    			});
         	    		}
-        	    		
         		   });
         	   }
            },
@@ -85,7 +88,8 @@ Ext.define('SP.controller.DistributePlanConfig', {
 
     	    	   var customer = {
         	    		   id : record.get('id'),
-        	    		   CustomerRank : record.get('CustomerRank')
+        	    		   CustomerRank : record.get('CustomerRank'),
+        	    		   CustomerType : record.get('CustomerType')
         	       };
         	       if(checked){
         	    	   for(var i = 0 , len = this.customers.length ; i < len ; i++){
@@ -96,12 +100,14 @@ Ext.define('SP.controller.DistributePlanConfig', {
         	    		   }
         	    	   }
         	       }else{
+        	    	   // checked if the customer has been added into this.customers
         	    	   for(var i = 0 , len = this.customers.length ; i < len ; i++){
         	    		   var item = this.customers[i];
         	    		   if(item.id == customer.id){
         	    			  return ;
         	    		   }
         	    	   }
+        	    	   // add the customer to this.customers
         	    	   Ext.Array.push(this.customers , customer);
         	       }
         	   }
@@ -152,27 +158,40 @@ Ext.define('SP.controller.DistributePlanConfig', {
     },
     
     addDistributePlanConfig : function(){
+    	 var me = this;
     	 var data = this.buildAddRequestData();
     	 
-	     this.distributePlanConfig.save({
+	     /*this.distributePlanConfig.save({
 	    	 success : function(){
 	    		 Ext.Msg.alert("提示" ,"成功添加记录");
+	    		 me.resetAllConfig();
 	    	 },
 	    	 failure : function(){
 	    		 Ext.Msg.alert("提示" ,"添加记录失败,请重试");
+	    		 me.resetAllConfig();
 	    	 }
-	     });  
+	     });*/  
 	     
 		Ext.Ajax.request({
 	    	   url: 'platform/admin?actid=1102',
 	    	   xmlData : data,
 	    	   success: function(response){
-	    		   alert("finish");
+	    		   var responseXml = response.responseXML;
+	    		   var isSuccess = responseXml.getElementsByTagName('state')[0].childNodes[0].nodeValue;
+	    		   if(isSuccess == 'true'){
+	    			   Ext.Msg.prompt("提示" ,"成功添加记录!");
+	    		   }else{
+	    			   var reason = responseXml.getElementsByTagName('reason')[0].childNodes[0].nodeValue;
+	    			   Ext.Msg.alert("提示" ,"添加记录失败,[原因：" + reason +   "],请重试!");    
+	    		   }
+	    	   },
+	    	   failure : function(){
+		    		 Ext.Msg.alert("提示" ,"添加记录失败,请重试！");    		   
 	    	   }
 	    });
     	
     },
-    
+
     buildAddRequestData : function(){
     	var distributePlanAddPanel = this.getDistributePlanAdd(),
 			layout = distributePlanAddPanel.getLayout(),
@@ -205,7 +224,8 @@ Ext.define('SP.controller.DistributePlanConfig', {
 		Ext.each(this.customers , function(){
 			distributePlanConfigXml.push('<customer>');
 			distributePlanConfigXml.push('	<id>' + this['id']  + '</id>');
-			distributePlanConfigXml.push('	<rank>' + this['CustomerRank']  + '</rank>');			
+			distributePlanConfigXml.push('	<rank>' + this['CustomerRank']  + '</rank>');		
+			distributePlanConfigXml.push('	<type>' + this['CustomerType']  + '</type>');	
 			distributePlanConfigXml.push('</customer>');		
 		});
 		distributePlanConfigXml.push('</excludeCustomers>');
@@ -223,5 +243,56 @@ Ext.define('SP.controller.DistributePlanConfig', {
 		distributePlanConfigXml.push('</CustomerRankAmount>');
 		distributePlanConfigXml.push('</distributePlanConfig>');		
 		return distributePlanConfigXml.join('');
+    },
+    
+    // reset the form of distributePlan add 
+    resetDistributePlanAddConfig : function(){
+    	this.getDistributePlanAdd().down("form").getForm().reset();
+    },
+    
+    // reset the form of distributePlan add
+    resetChooseMaterialConfig : function(){
+    	var materialGrid = this.getChooseMaterialGrid();
+    	var store = materialGrid.getStore();
+    		store.loadPage(1);
+    		return true;
+    },
+    
+    // reset the form of distributePlan add
+    resetChooseCustomerConfig : function(){
+    	this.customers = [];
+    	var customerGrid = this.getChooseCustomerGrid();
+    	var store = customerGrid.getStore();
+    		store.loadPage(1);
+    		return true;   	
+    },
+    
+    // reset the form of distributePlan add    
+    resetDistributeParamConfig : function(){
+    	var paramGrid = this.getDistributeParamGrid();
+    	var store = paramGrid.getStore();
+    		store.reload();
+    		return true;  
+    },
+    
+    resetAllConfig : function(){
+    	this.resetDistributePlanAddConfig();
+    	this.resetChooseMaterialConfig();
+    	this.resetChooseCustomerConfig();
+    	this.resetDistributeParamConfig();
+    	
+        var distributePlanAddPanel = this.getDistributePlanAdd(),
+        	layout = distributePlanAddPanel.getLayout();
+        	layout.setActiveItem(0);
+        
+        distributePlanAddPanel.down('button[action=move-prev]').setDisabled(!layout.getPrev());
+        if(layout.getNext()){
+        	distributePlanAddPanel.down('button[action=finish]').hide();
+        	distributePlanAddPanel.down('button[action=move-next]').show();
+        }else{
+        	distributePlanAddPanel.down('button[action=finish]').show();
+        	distributePlanAddPanel.down('button[action=move-next]').hide();
+        }
+    	return true;
     }
 });
