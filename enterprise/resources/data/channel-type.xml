@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+	<request><![CDATA[/mice/platform/business/?actid=2029&]]></request>
+	<state>1</state>
+	<detailes>
+		<metadata>
+			<record-number>11</record-number>
+			<page-number>1</page-number>
+			<page-index>1</page-index>
+			<page-size>20</page-size>
+			<column-total>17</column-total>
+			<column name="channel-id" displayName="ID" />
+			<column name="channel-name" displayName="类型名字" />
+			<column name="description" displayName="描述" />
+			<sort-by>channel-id</sort-by>
+			<sort-sequence>ASC</sort-sequence>
+		</metadata>
+		<data>
+			<types>
+				<type>
+					<channel-id>1</channel-id>
+					<channel-name>自营渠道商</channel-name>
+					<description>UNKNOWN</description>
+				</type>
+				<type>
+					<channel-id>2</channel-id>
+					<channel-name>渠道服务商</channel-name>
+					<description>UNKNOWN</description>
+				</type>
+			</types>
+		</data>
+	</detailes>
+</response>

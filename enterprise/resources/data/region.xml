@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<request><![CDATA[/mice/platform/admin?_dc=1387250166144&actid=1061&]]></request>
+	<state>1</state>
+	<detailes>
+		<metadata>
+			<record-number>42</record-number>
+			<column name="id" displayName="ID"/>
+			<column name="value" displayName="键值"/>
+			<column name="description" displayName="描述"/>
+			<column name="parentid" displayName="上级ID"/>
+		</metadata>
+		<data>
+			<node text="华北大区" id="8" description="null" parentid="0">
+				<children>
+					<node text="天津市" id="41" description="null" parentid="8"/>
+					<node text="山西省" id="40" description="null" parentid="8"/>
+					<node text="山东省" id="39" description="null" parentid="8"/>
+					<node text="内蒙古" id="38" description="null" parentid="8"/>
+					<node text="河北省" id="37" description="null" parentid="8"/>
+					<node text="北京市" id="36" description="null" parentid="8"/>
+				</children>
+			</node>
+			<node text="华南大区" id="7" description="null" parentid="0">
+				<children>
+					<node text="香港" id="35" description="null" parentid="7"/>
+					<node text="深圳市" id="34" description="null" parentid="7"/>
+					<node text="海南省" id="33" description="null" parentid="7"/>
+					<node text="广西省" id="32" description="null" parentid="7"/>
+					<node text="广东省" id="31" description="null" parentid="7"/>
+					<node text="福建省" id="30" description="null" parentid="7"/>
+				</children>
+			</node>
+			<node text="东北大区" id="6" description="null" parentid="0">
+				<children>
+					<node text="辽宁省" id="29" description="null" parentid="6"/>
+					<node text="吉林省" id="28" description="null" parentid="6"/>
+					<node text="黑龙江" id="27" description="null" parentid="6"/>
+				</children>
+			</node>
+			<node text="西南大区" id="5" description="null" parentid="0">
+				<children>
+					<node text="重庆市" id="26" description="null" parentid="5"/>
+					<node text="云南省" id="25" description="null" parentid="5"/>
+					<node text="西藏" id="24" description="null" parentid="5"/>
+					<node text="四川省" id="23" description="null" parentid="5"/>
+					<node text="贵州省" id="22" description="null" parentid="5"/>
+					<node text="test666" id="42" description="test666" parentid="5"/>
+				</children>
+			</node>
+			<node text="华东大区" id="4" description="null" parentid="0">
+				<children>
+					<node text="浙江省" id="21" description="null" parentid="4"/>
+					<node text="上海市" id="20" description="null" parentid="4"/>
+					<node text="江苏省" id="19" description="null" parentid="4"/>
+					<node text="安徽省" id="18" description="null" parentid="4"/>
+				</children>
+			</node>
+			<node text="西北大区" id="3" description="null" parentid="0">
+				<children>
+					<node text="新疆省" id="17" description="null" parentid="3"/>
+					<node text="陕西省" id="16" description="null" parentid="3"/>
+					<node text="青海省" id="15" description="null" parentid="3"/>
+					<node text="宁夏省" id="14" description="null" parentid="3"/>
+					<node text="甘肃省" id="13" description="null" parentid="3"/>
+				</children>
+			</node>
+			<node text="华中大区" id="2" description="null" parentid="0">
+				<children>
+					<node text="江西省" id="12" description="null" parentid="2"/>
+					<node text="湖南省" id="11" description="null" parentid="2"/>
+					<node text="湖北省" id="10" description="null" parentid="2"/>
+					<node text="河南省" id="9" description="null" parentid="2"/>
+				</children>
+			</node>
+			<node text="公司留存" id="1" description="null" parentid="0"/>
+		</data>
+	</detailes>
+</response>
