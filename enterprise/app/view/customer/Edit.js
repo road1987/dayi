@@ -10,13 +10,6 @@ Ext.define('SP.view.customer.Edit' ,{
 
     title: '客户信息',
     initComponent: function() {
-    	var customerTypeStore = new SP.store.CustomerType();
-   // 		//customerTypeStore.load();
-	    var businessModeStore = new SP.store.BusinessMode();
-	//    	//businessModeStore.load();
-	    var customerLevelStore = new SP.store.CustomerLevel();
-	//        //customerLevelStore.load();
-	        
     	this.tbar = Ext.create("Ext.Toolbar", {
     	    items: [{
     	    	action : "back",
@@ -125,8 +118,7 @@ Ext.define('SP.view.customer.Edit' ,{
             	        fieldLabel: '客户类型',
             	        name: 'CustomerType',
             	        allowBlank: false,
-            	        store : customerTypeStore,
-            	        //store : 'CustomerType',
+            	        store : 'CustomerType',
             	        displayField : 'value',
             	        valueField : 'id'
         	        },{
@@ -150,8 +142,7 @@ Ext.define('SP.view.customer.Edit' ,{
             	        fieldLabel: '经营方式',
             	        name: 'BusinessMode',
             	        allowBlank: false,
-            	        //store : new SP.store.BusinessMode(),
-            	        store : businessModeStore,
+            	        store : 'BusinessMode',
             	        displayField : 'value',
             	        valueField : 'id'
         	        },{
@@ -160,8 +151,7 @@ Ext.define('SP.view.customer.Edit' ,{
             	        fieldLabel: '店面级别',
             	        name: 'CustomerRank',
             	        allowBlank: false,
-            	       // store : new SP.store.CustomerLevel(),
-            	        store : customerLevelStore,
+            	        store : 'CustomerLevel',
             	        displayField : 'value',
             	        valueField : 'id'
         	        }]

@@ -19,7 +19,9 @@
 }
 
 #header .menu-main ul{
-	width : 400px;
+	width : 500px;
+	height : 90px;
+	overflow : hidden;
 	margin : 0px auto;
 	padding : 0px;
 }
@@ -37,7 +39,7 @@
 	width : 80px;
 	height : 80px;
 	margin : 0px;
-	padding-top : 55px;
+	1padding-top : 55px;
 	float : left;
 	background : #B3CBDE;
 	border : 1px solid #1F3E61;
@@ -55,7 +57,12 @@
 	background : #EEEEEE;
 }
 
-#header .menu-main a span{
+#header .menu-main a span.text{
+	display  : block;
+	margin-top : 55px;
+}
+
+#header .menu-main a span.icon{
 	display  : block;
 	width : 42px;
 	height : 42px;

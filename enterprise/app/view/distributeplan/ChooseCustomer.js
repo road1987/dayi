@@ -8,7 +8,7 @@ Ext.define('SP.view.distributeplan.ChooseCustomer' ,{
     itemId : 'choosecustomer',
     initComponent: function() {
     	var customerStore = new SP.store.Customer();
-    		customerStore.load();
+
     	this.items = [{
     			border : false,
     			bodyPadding : "0 0 0 10px",

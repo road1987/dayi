@@ -67,6 +67,7 @@ Ext.define('SP.controller.DistributePlanConfig', {
            
            "distributeplanadd > choosecustomer grid" : {
         	   render : function(comp){
+        		   comp.getStore().load();
         		   // after loaded new data , check if customers has been added into me.customers
         		   comp.getStore().on("load", function(store, records, successful, eOpts){
         	    		if(successful){

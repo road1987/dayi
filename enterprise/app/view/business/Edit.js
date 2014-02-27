@@ -5,10 +5,6 @@ Ext.define('SP.view.business.Edit' ,{
 
     title: '渠道商信息',
     initComponent: function() {
-    	var channelTypeStore = new SP.store.ChannelType();
-    		channelTypeStore.load();
-	    var channelLevelStore = new SP.store.ChannelLevel();
-	    	channelLevelStore.load();
         
     	this.tbar = Ext.create("Ext.Toolbar", {
     	    items: [{
@@ -95,8 +91,7 @@ Ext.define('SP.view.business.Edit' ,{
             	        fieldLabel: '渠道商类型',
             	        name: 'ServiceProviderType',
             	        allowBlank: false,
-            	       // store : new SP.store.ChannelType(),
-            	        store : channelTypeStore,
+            	        store : 'ChannelType',
             	        displayField : 'value',
             	        valueField : 'id'
         	        },{
@@ -105,8 +100,7 @@ Ext.define('SP.view.business.Edit' ,{
             	        fieldLabel: '渠道商级别',
             	        name: 'ServiceProviderRank',
             	        allowBlank: false,
-            	        //store : new SP.store.ChannelLevel(),
-            	        store : channelLevelStore,
+            	        store : 'ChannelLevel',
             	        displayField : 'value',
             	        valueField : 'id'
         	        }]

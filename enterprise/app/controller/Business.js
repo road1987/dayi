@@ -106,6 +106,15 @@ Ext.define('SP.controller.Business', {
           		click : this.showBusinessList
            },
            
+           
+           //business edit
+           "businessedit combobox" : {
+	       	    render : function(comp){
+	       	    	comp.getStore().load();
+	       	    	return true;
+	       	    }
+           },
+          
            "businessedit button[action=back]" : {
          		click : this.showBusinessList
            },

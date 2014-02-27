@@ -8,8 +8,10 @@ Ext.define('SP.view.distributeplan.Add' ,{
     
     id : 'distributePlanAddPanel',
     title: '创建配货计划',
-	layout : 'card',
-	
+	layout : { 
+		type : 'card',
+		deferredRender: true
+	},
     initComponent: function() {
     	var me = this;
     	this.tbar = [{

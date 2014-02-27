@@ -92,6 +92,15 @@ Ext.define('SP.controller.Customer', {
             		}
             	}
             },
+            
+           //customer edit
+           "customeredit combobox" : {
+        	    render : function(comp){
+        	    	comp.getStore().load();
+        	    	return true;
+        	    }
+           },
+           
            "customeredit button[action=submit]" : {
           		click : this.addCustomer
            },

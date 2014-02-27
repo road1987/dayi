@@ -74,6 +74,8 @@ Ext.define('SP.view.Viewport' ,{
         		deferredRender: true
         	},
         	items : [{
+            	xtype : 'materiallist'
+        	},{
         		xtype : 'customerlevellist'
         	},{
         		xtype : 'customerleveledit'
@@ -119,8 +121,6 @@ Ext.define('SP.view.Viewport' ,{
         		xtype : 'businessedit'
         	},{
         		xtype : 'businessadd'
-        	},{
-            	xtype : 'materiallist'
         	},{
         		xtype : 'distributeplanadd' //build
         	},{

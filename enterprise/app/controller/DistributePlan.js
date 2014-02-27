@@ -27,9 +27,10 @@ Ext.define('SP.controller.DistributePlan', {
         	   changestatusbuttonclick : this.changeDistributePlanStatus
            },
            "distributeplanlist tabpanel" : {
-        	   tabchange : function(tabpanel, newcard, oldcard, eOpts){
-        		   newcard.getStore().reload();
-        	   }
+        	   //the code under will automatic excute 
+//        	   tabchange : function(tabpanel, newcard, oldcard, eOpts){
+//        		   newcard.getStore().reload();
+//        	   }
            },
            "distributeplanitemlist button[action=back]" : {
         	   click  : this.showDistributePlanList

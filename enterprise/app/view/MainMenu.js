@@ -10,7 +10,7 @@ Ext.define('SP.view.MainMenu' ,{
     	var tpl = '<ul><tpl for=".">' + 
     				'<li id="{id}" class="js-main-menuitem">' +
     					'<a href="#">' +
-    						'<span class="icon-{id}"></span>{name}' +
+    						'<span class="icon icon-{id}"></span><span class="text">{name}</span>' +
     					'</a>' +
     				'</li>' + 
     			  '</tpl></ul>';
